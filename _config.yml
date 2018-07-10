@@ -31,7 +31,7 @@ tags_path: tags.html
 
 # sidebar_background_image:
 
-BASE_PATH: "https://alemanoelsilva.github.io/"
+BASE_PATH: "https://alemanoelsilva.github.io"
 
 plugins:
   - jekyll-paginate

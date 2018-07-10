@@ -1,0 +1,37 @@
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md"] # files to exclude
+highlighter: rouge
+markdown: kramdown
+disqus: alemanoelsilva
+google_analytics: dbyll
+title: Alexandre M Silva
+
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: Alexandre Blog
+
+description: Site Pessoal
+author:
+  name: Alexandre
+  email: alemanoelsilva@gmail.com
+  github: alemanoelsilva
+  twitter: alemanoelsilva
+  pinterest: asd123
+  linkedin: asd123
+  bio: Este é meu blog onde pretendo escrever sobre viagens, dia a dia e algumas coisas sobre Desenvolvimento de Softwawre
+  email_md5: 3c1fc52e204750280efe590a62ceb2d0
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+# sidebar_background_image:
+
+BASE_PATH:
+
+plugins:
+  - jekyll-paginate

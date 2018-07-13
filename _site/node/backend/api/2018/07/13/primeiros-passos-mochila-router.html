@@ -2,9 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Primeiro Post !!</title>
+	<title>Primeiros Passos</title>
 	
-	<meta name="description" content="Primeiro post do blog.">
+	<meta name="description" content="Esse é o primeiro post de uma série onde pretendo construir uma aplicação backend utilizando o padrão REST, arquitetura hexagonal, separação de componentes e testes unitários e integrados.">
 	
 	<meta name="author" content="Alexandre">
 
@@ -157,7 +157,7 @@
 
 	<div class="col-sm-9 col-sm-offset-3">
 		<div class="page-header">
-  <h1>Primeiro Post !! </h1>
+  <h1>Primeiros Passos </h1>
 </div>
 	
 <article>
@@ -166,17 +166,80 @@
 	 <span class="post-date">
 	   
 	   July 
-	   9th,
+	   13th,
 	   
 	   2018
 	 </span>
 	  <div class="article_body">
-	  <p>Primeiro post do blog.</p>
+	  <h2 id="introdução">Introdução</h2>
 
-<p>Espero poder contribuir com algo relevante tanto na comunidade de desenvolvimento quanto com dicas sobre viagens e intercambio.</p>
+<p>A ideia desta série de artigos é compartilhar os meus estudos e sempre escrever artigos para me forçar a continuar estudando.</p>
 
-<p>Talvez eu escreva algo em inglês no futuro, vamos ver como eu consigo evoluir nisso.</p>
+<p>Eu particularmente não gosto de estudar fazendos exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa.</p>
 
+<p>Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá <code class="highlighter-rouge">json's</code> para o cliente (web e mobile). Não sou criativos para dar nomes, então resolvi chamar essa API de mochilaRouter.</p>
+
+<p>O que é o projeto <strong>mochilaRouter</strong>?</p>
+
+<p>Tenho várias ideias e features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem.</p>
+
+<p>Nesse inicio, vamos criar cinco endpoints para manipulação das informações de um roteiro de viagem.</p>
+
+<p>Vamos utilizar as seguintes tecnologias:</p>
+
+<ul>
+  <li>Node
+    <ul>
+      <li>Express</li>
+      <li>Sequelize</li>
+      <li>Dotenv</li>
+    </ul>
+  </li>
+  <li>Postgres</li>
+  <li>Docker</li>
+</ul>
+
+<h3 id="organização-de-pastas-que-vamos-adotar">Organização de pastas que vamos adotar</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  api
+  |- helpers
+      |- handler-error.js
+      |- handler-sucess.js
+  |- itinerary
+      |- adapter.js
+      |- factory.js
+      |- model.js
+      |- repository.js
+  |- config
+      |- environmente.js
+      |- sequelize.js
+  app.js
+  routes.js
+  server.js
+  .env
+  Readme.md
+</code></pre></div></div>
+
+<p>A pasta <em>api</em> conterá todos os arquivos necessários para a execução da aplicação.</p>
+
+<p>Dentro de <em>api</em> temos:</p>
+<ol>
+  <li><strong>helpers</strong>: funções auxiliares, poderiamos chamar de <em>utils</em> ou <em>commons</em>.</li>
+  <li><strong>config</strong>: configurações em geral.</li>
+  <li><strong>itinerary</strong>: essta pasta conterá o nosso modelo de Roteiro, repository que abstrai a manipulação do banco de dados, adapter que implementa a lógica do endpoint e o factory para construir o objeto a ser injetado na rota.</li>
+</ol>
+
+<p>Já os outros arquivos, <em>server.js</em> e <em>app.js</em> contém as configurações da aplicação e o arquivo <em>routes.js</em> contém as rotas.</p>
+
+<p>O arquivo <em>.env</em> nos utilizamos para mapear as variaveis de ambiente e <strong>não comitamos no repositório</strong>.</p>
+
+<p>Geralmente no <em>Readme.md</em> tem um bloco com a configuração necessária para a criação do arquivo <em>.env</em>.</p>
+
+<p>Por exemplo:</p>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/to%20iniatialize%20the%20application.jpeg" alt="readme with configuration of .env file" /></p>
+
+<p>O próximo vamos colocar a mão na massa o iniciar o projeto.</p>
 
 	  </div>
 
@@ -186,8 +249,18 @@
 		  
 		  
 			 
-				<li><a href="/categories.html#blog-ref">
-					blog <span>(1)</span>
+				<li><a href="/categories.html#node-ref">
+					node <span>(1)</span>
+					,
+				</a></li>
+			 
+				<li><a href="/categories.html#backend-ref">
+					backend <span>(1)</span>
+					,
+				</a></li>
+			 
+				<li><a href="/categories.html#api-ref">
+					api <span>(1)</span>
 					
 				</a></li>
 			
@@ -202,8 +275,29 @@
 		  
 			 
 				<li>
-					<a href="/tags.html#blog-ref">
-					blog <span>(1)</span>
+					<a href="/tags.html#unit test-ref">
+					unit test <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#express-ref">
+					express <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#sequelize-ref">
+					sequelize <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#postgres-ref">
+					postgres <span>(1)</span>
 					
 					</a>
 				</li>
@@ -218,7 +312,7 @@
 		<div>
       <section class="share col-sm-6">
         <h4 class="section-title">Share Post</h4>
-        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Primeiro Post !!&via=alemanoelsilva"
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Primeiros Passos&via=alemanoelsilva"
            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <i class="fa fa-twitter fa-lg"></i>
           Twitter
@@ -246,10 +340,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous disabled"><a>&larr; Previous</a></li>
+		  <li class="previous"><a href="/blog/2018/07/09/primeiro-post.html" title="Primeiro Post !!">&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="/node/backend/api/2018/07/13/primeiros-passos-mochila-router.html" title="Primeiros Passos">Next &rarr;</a></li>
+			<li class="next disabled"><a>Next &rarr;</a>
 		  
 		</ul>
 

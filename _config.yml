@@ -12,7 +12,7 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: Alexandre Blog
+      title: Alexandre Silva
 
 description: Site Pessoal
 author:
@@ -29,9 +29,10 @@ rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
 
-# sidebar_background_image:
+sidebar_background_image: https://images.wallpaperscraft.com/image/stars_space_sky_glitter_116409_1920x1080.jpg
 
-BASE_PATH: "https://alemanoelsilva.github.io"
+#BASE_PATH: "https://alemanoelsilva.github.io"
+BASE_PATH:
 
 plugins:
   - jekyll-paginate

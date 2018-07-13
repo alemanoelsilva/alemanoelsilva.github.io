@@ -1,7 +1,10 @@
 @import url(//fonts.googleapis.com/css?family=Ubuntu:500&subset=latin,latin-ext);
 
 body{
-	color: #2c3e50;
+  color: #2c3e50;
+  font-family: "fantasy", Times, serif;
+  font-size: 18px;
+  text-align: justify;
 }
 
 .sidebar {

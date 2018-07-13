@@ -7,10 +7,90 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Primeiro Post !!</title>
-				<description>&lt;p&gt;Lorem ipsum dolor sit amet,  consectetur adipisicing elit,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,  sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+				<title>Primeiros Passos</title>
+				<description>&lt;h2 id=&quot;introdução&quot;&gt;Introdução&lt;/h2&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet,  consectetur adipisicing elit,  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,  sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
+&lt;p&gt;A ideia desta série de artigos é compartilhar os meus estudos e sempre escrever artigos para me forçar a continuar estudando.&lt;/p&gt;
+
+&lt;p&gt;Eu particularmente não gosto de estudar fazendos exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa.&lt;/p&gt;
+
+&lt;p&gt;Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá &lt;code class=&quot;highlighter-rouge&quot;&gt;json's&lt;/code&gt; para o cliente (web e mobile). Não sou criativos para dar nomes, então resolvi chamar essa API de mochilaRouter.&lt;/p&gt;
+
+&lt;p&gt;O que é o projeto &lt;strong&gt;mochilaRouter&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;Tenho várias ideias e features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem.&lt;/p&gt;
+
+&lt;p&gt;Nesse inicio, vamos criar cinco endpoints para manipulação das informações de um roteiro de viagem.&lt;/p&gt;
+
+&lt;p&gt;Vamos utilizar as seguintes tecnologias:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Node
+    &lt;ul&gt;
+      &lt;li&gt;Express&lt;/li&gt;
+      &lt;li&gt;Sequelize&lt;/li&gt;
+      &lt;li&gt;Dotenv&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Postgres&lt;/li&gt;
+  &lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;organização-de-pastas-que-vamos-adotar&quot;&gt;Organização de pastas que vamos adotar&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  api
+  |- helpers
+      |- handler-error.js
+      |- handler-sucess.js
+  |- itinerary
+      |- adapter.js
+      |- factory.js
+      |- model.js
+      |- repository.js
+  |- config
+      |- environmente.js
+      |- sequelize.js
+  app.js
+  routes.js
+  server.js
+  .env
+  Readme.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A pasta &lt;em&gt;api&lt;/em&gt; conterá todos os arquivos necessários para a execução da aplicação.&lt;/p&gt;
+
+&lt;p&gt;Dentro de &lt;em&gt;api&lt;/em&gt; temos:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;helpers&lt;/strong&gt;: funções auxiliares, poderiamos chamar de &lt;em&gt;utils&lt;/em&gt; ou &lt;em&gt;commons&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;config&lt;/strong&gt;: configurações em geral.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;itinerary&lt;/strong&gt;: essta pasta conterá o nosso modelo de Roteiro, repository que abstrai a manipulação do banco de dados, adapter que implementa a lógica do endpoint e o factory para construir o objeto a ser injetado na rota.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Já os outros arquivos, &lt;em&gt;server.js&lt;/em&gt; e &lt;em&gt;app.js&lt;/em&gt; contém as configurações da aplicação e o arquivo &lt;em&gt;routes.js&lt;/em&gt; contém as rotas.&lt;/p&gt;
+
+&lt;p&gt;O arquivo &lt;em&gt;.env&lt;/em&gt; nos utilizamos para mapear as variaveis de ambiente e &lt;strong&gt;não comitamos no repositório&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Geralmente no &lt;em&gt;Readme.md&lt;/em&gt; tem um bloco com a configuração necessária para a criação do arquivo &lt;em&gt;.env&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Por exemplo:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/to%20iniatialize%20the%20application.jpeg&quot; alt=&quot;readme with configuration of .env file&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;O próximo vamos colocar a mão na massa o iniciar o projeto.&lt;/p&gt;
+</description>
+				<pubDate>Fri, 13 Jul 2018 00:00:00 -0300</pubDate>
+				<link>/node/backend/api/2018/07/13/primeiros-passos-mochila-router.html</link>
+				<guid isPermaLink="true">/node/backend/api/2018/07/13/primeiros-passos-mochila-router.html</guid>
+			</item>
+		
+			<item>
+				<title>Primeiro Post !!</title>
+				<description>&lt;p&gt;Primeiro post do blog.&lt;/p&gt;
+
+&lt;p&gt;Espero poder contribuir com algo relevante tanto na comunidade de desenvolvimento quanto com dicas sobre viagens e intercambio.&lt;/p&gt;
+
+&lt;p&gt;Talvez eu escreva algo em inglês no futuro, vamos ver como eu consigo evoluir nisso.&lt;/p&gt;
+
 </description>
 				<pubDate>Mon, 09 Jul 2018 00:00:00 -0300</pubDate>
 				<link>/blog/2018/07/09/primeiro-post.html</link>

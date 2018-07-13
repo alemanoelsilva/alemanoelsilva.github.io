@@ -69,4 +69,4 @@ Por exemplo:
 
 ![readme with configuration of .env file](https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/to%20iniatialize%20the%20application.jpeg)
 
-O próximo vamos colocar a mão na massa o iniciar o projeto.
+O próximo post vamos colocar a mão na massa e iniciar o projeto.

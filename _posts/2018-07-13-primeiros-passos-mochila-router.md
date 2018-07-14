@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Primeiros Passos
-categories: [node, backend, api]
-tags: [unit test, express, sequelize, postgres]
+categories: [mochilaRouter]
+tags: [node, express, sequelize, postgres]
 description: Esse é o primeiro post de uma série onde pretendo construir uma aplicação backend utilizando o padrão REST, arquitetura hexagonal, separação de componentes e testes unitários e integrados.
 ---
 

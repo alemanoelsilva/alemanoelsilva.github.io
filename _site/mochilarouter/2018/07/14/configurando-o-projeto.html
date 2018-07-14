@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Iniciando o Projeto</title>
+	
+	<meta name="description" content="Agora que você já sabe o que é o mochilaRouter, vamos iniciar o projeto e suas configurações.">
+	
+	<meta name="author" content="Alexandre">
+
+	<!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le styles -->
+	<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+	<link href="/assets/css/style.css" rel="stylesheet">
+
+	<!-- Le fav and touch icons -->
+	<!-- Update these with your own images
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	-->
+
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+</head>
+
+<body>
+	<nav class="navbar navbar-default visible-xs" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://github.com/alemanoelsilva">
+				<i class="fa fa-github"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://twitter.com/alemanoelsilva">
+				<i class="fa fa-twitter"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="mailto:alemanoelsilva@gmail.com">
+				<i class="fa fa-envelope"></i>
+			</a>
+			
+			<a class="navbar-brand" href="/">
+				<img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0?s=35" class="img-circle" />
+				Alexandre M Silva
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/categories.html">Categorias</a></li>
+				<li><a href="/tags.html">Tags</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
+
+	<!-- nav-menu-dropdown -->
+	<div class="btn-group hidden-xs" id="nav-menu">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<i class="fa fa-bars"></i>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/categories.html"><i class="fa fa-folder"></i>Categorias</a></li>
+			<li><a href="/tags.html"><i class="fa fa-tags"></i>Tags</a></li>
+			<li class="divider"></li>
+			<li><a href="#"><i class="fa fa-arrow-up"></i>Top of Page</a></li>
+		</ul>
+	</div>
+
+	<div class="col-sm-3 sidebar hidden-xs" style="background: url(https://images.wallpaperscraft.com/image/stars_space_sky_glitter_116409_1920x1080.jpg) no-repeat !important;">
+		<!-- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">Alexandre M Silva</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Este é meu blog onde pretendo escrever sobre viagens, dia a dia e algumas coisas sobre Desenvolvimento de Software
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/alemanoelsilva">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/alemanoelsilva">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="mailto:alemanoelsilva@gmail.com">
+				<i class="fa fa-envelope fa-lg"></i>
+			</a>
+		</li>
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://pinterest.com/alemanoelsilva">
+				<i class="fa fa-pinterest fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/alemanoelsilva">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/feed.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+<!-- sidebar.html end -->
+
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3">
+		<div class="page-header">
+  <h1>Iniciando o Projeto </h1>
+</div>
+	
+<article>
+
+	<div class="col-sm-10">
+	 <span class="post-date">
+	   
+	   July 
+	   14th,
+	   
+	   2018
+	 </span>
+	  <div class="article_body">
+	  <h2 id="o-que-é-preciso">O que é preciso</h2>
+
+<p>Para conseguirmos executar o projeto localmente, vamos precisar instalar algumas ferramentas.</p>
+
+<ul>
+  <li><a href="https://nodejs.org/en/">Node</a> v9.5</li>
+  <li><a href="https://docs.docker.com/install/">Docker</a></li>
+  <li><a href="https://code.visualstudio.com/Docs/setup/setup-overview">Editor</a> (utilizo e recomendo o VSCode)</li>
+</ul>
+
+<p>Após instalar essas ferramentas, vamos iniciar o projeto:</p>
+
+<p>No terminal, crie a pasta <strong>mochila-router-api</strong> (ou outro nome de sua preferência) e dentro dela execute o comando <code class="highlighter-rouge">npm init</code>. Configure os valores ou apenas tecle <ENTER> para prosseguir e finalizar.</ENTER></p>
+
+<p>Aqui, nós já temos a nossa pasta de trabalho com o arquivo <code class="highlighter-rouge">package.json</code> criado. Esse arquivo é responsável por armazenar as dependências, informações e scripts do projeto.</p>
+
+<p>Pelo terminal, dentro da pasta de trabalho, vamos executar a instalação de pacotes que vamos precisar. Digite o camando abaixo e tecle ENTER.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">--save</span> express nodemon sequelize dotenv pg pg-hstore
+</code></pre></div></div>
+
+<p>Após a instalação, esses pacotes estarão listados no seu arquivo <code class="highlighter-rouge">package.json</code>.</p>
+
+<p>Os pacotes <em>sequelize</em>, <em>pg</em>, <em>pg-hstore</em> são necessários para a API se comunicar com o Postgres. <em>dotent</em> é utilizado parra carregar as variaveis de ambiente da aplicação, o <em>nodemon</em> é um watcher para verificar alterações no código para o servidor ser carregado automaticamente. Já o <em>express</em> é o nosso framework para criar abstrações de rotas, middlewares e outras funções que facilitam a criação de serviços.</p>
+
+<h2 id="estrutura-do-projeto">Estrutura do projeto</h2>
+
+<p>Como vimos no post anterior, precisamos criar uma estrutura igual a essa;</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  api
+  |- helpers
+      |- handler-error.js
+      |- handler-sucess.js
+  |- itinerary
+      |- adapter.js
+      |- factory.js
+      |- model.js
+      |- repository.js
+  |- config
+      |- environmente.js
+      |- sequelize.js
+  app.js
+  routes.js
+  server.js
+  .env
+  Readme.md
+</code></pre></div></div>
+
+<h3 id="criando-o-ramo-config">Criando o ramo config</h3>
+
+<p>Na pasta <em>config</em>, vamos criar dois arquivos, <em>sequelize.js</em> e <em>environment.js</em>.</p>
+
+<ul>
+  <li>O conteúdo de <em>sequelize.js</em> será o seguinte:</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s1">'use strict'</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'sequelize'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="na">db</span><span class="p">:</span> <span class="p">{</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./environment'</span><span class="p">);</span>
+
+    <span class="kd">let</span> <span class="nx">connection</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">connectDB</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">connection</span><span class="p">)</span> <span class="k">return</span> <span class="nx">connection</span><span class="p">;</span>
+
+      <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">host</span><span class="p">:</span> <span class="s1">'localhost'</span><span class="p">,</span>
+        <span class="na">dialect</span><span class="p">:</span> <span class="s1">'postgres'</span><span class="p">,</span>
+        <span class="na">operatorsAliases</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">});</span>
+
+      <span class="nx">connection</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Postgres connected'</span><span class="p">))</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Error in the connection Postgres </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+    <span class="p">};</span>
+
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">connectDB</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Aqui temos os nossos imports <em>Sequelize</em> do pacote sequelize que instalamos no passo anterior. Ele nos permite criar a conexão com o nosso banco de dados. Ao utilizar <code class="highlighter-rouge">new Sequelize(...)</code> nós passamos como parâmetro o <em>database</em>, <em>user</em> e <em>pass</em> que obtemos do nosso outro arquivo <em>environment.js</em>, além do objeto com o host e dialect.</p>
+
+<p>Atribuimos a conexão na variável <code class="highlighter-rouge">connection</code> e executamos o comando <code class="highlighter-rouge">sync</code> para efetuar a conexão com o banco de dados. Esse comando retorna uma Promise que ao ser resolvida, exibe no terminal a mensagem <em>Postgres connected</em>, caso haja algum tipo de erro nesse processo, é exibida a mensagem <em>Error in the connection Postgres ${error}</em>.</p>
+
+<blockquote>
+  <p><strong>Obs</strong>: Um erro que obtive nesse processo foi a não criação do database <em>mochilaRouter</em> na conexão da aplicação com o Postgres. Ao subir a imagem do Docker é preciso informar o usuário, senha e database. Quando chegarmos nesse ponto explicarei melhor.</p>
+</blockquote>
+
+<p>Encapsulamos todo esse processo na função <code class="highlighter-rouge">connectDB</code>, que ao ser executada valida a conexão antes de criar uma nova, e no final do arquivo a exportamos.</p>
+
+<ul>
+  <li>O conteúdo de <em>environment.js</em> será o seguinte:</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="s1">'use strict'</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">dotenv</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'dotenv'</span><span class="p">);</span>
+
+    <span class="nx">dotenv</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">env</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">,</span>
+      <span class="na">app</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">port</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span>
+      <span class="p">},</span>
+      <span class="na">db</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">database</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_DATABASE</span><span class="p">,</span>
+        <span class="na">user</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_USER</span><span class="p">,</span>
+        <span class="na">pass</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_PASS</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+</code></pre></div></div>
+
+<p>Esse arquivo é bem menor, o que fazemos é usar o <code class="highlighter-rouge">dotenv</code> do pacote que instalamos para carregar as variáveis do arquivo <code class="highlighter-rouge">.env</code> e valorizar o objeto que exportamos. Esse objeto é importado no <em>sequelize.js</em>.</p>
+
+<h3 id="criando-o-ramo-api">Criando o ramo api</h3>
+
+<p>Dentro da pasta <em>api</em>, vamos criar mais duas pastas, <em>helpers</em> e <em>itinerary</em>.</p>
+
+<h4 id="criando-o-ramo-itinerary">Criando o ramo itinerary</h4>
+
+<p>A princípio, esta será a pasta onde vamos realmente trabalhar. Vamos criar agora 4 arquivos; <em>model.js</em>, <em>repository.js</em>, <em>adapter.js</em> e <em>factory.js</em>.</p>
+
+<ul>
+  <li>O conteúdo de <em>model.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'sequelize'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../config/sequelize'</span><span class="p">)();</span>
+
+<span class="kd">const</span> <span class="nx">Itinerary</span> <span class="o">=</span> <span class="nx">connection</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s1">'itinerary'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">_id</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">UUID</span><span class="p">,</span>
+    <span class="na">field</span><span class="p">:</span> <span class="s1">'_id'</span><span class="p">,</span>
+    <span class="na">primaryKey</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">UUIDV4</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">isPrivate</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+  <span class="na">isActive</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">description</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">duration</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span>
+  <span class="p">},</span>
+  <span class="na">places</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">ARRAY</span><span class="p">(</span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">JSON</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">createdAt</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">DATE</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">NOW</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">updatedAt</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">DATE</span><span class="p">,</span>
+    <span class="na">allowNull</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">tableName</span><span class="p">:</span> <span class="s1">'itinerary'</span><span class="p">,</span>
+    <span class="na">timestamps</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">});</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Itinerary</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Esse arquivo gigante é apenas para mapearmos os campos que o nosso modelo de Roteiro terá. Basicamente,  teremos um id, nome, descrição, duração, se é privado, se está ativo, data de criação e alteração e um array de lugares.</p>
+
+<p>Utilizando o Sequelize, podemos definir o tipo do campo <code class="highlighter-rouge">type</code> por exemplo, além de setar valores default <code class="highlighter-rouge">defaultValue</code> e permitir ou não valor nulo <code class="highlighter-rouge">allowwNull</code>.</p>
+
+<p>A partir da conexão que obtemos do nosso arquivo de configuração do Sequelize, podemos utilizar o método <code class="highlighter-rouge">define</code> para definir um modelo, esse modelo terá os mesmo campos da nossa tabela, ou seja, vamos criar nossas tabelas sem precisar escrever comandos SQL.</p>
+
+<ul>
+  <li>O conteúdo de <em>repository.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+  <span class="na">create</span><span class="p">:</span> <span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">model</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O repository é utilizado para abstrair a manipulação do banco de dados. Caso haja a necessidade de inserir comandos SQL para uma query ou mesmo elaborar uma consulta mais refinada, podemos deixar completamente separada a lógica de acesso ao banco de dados da lógica de negócio da aplicação. Quando chegarmos nesse ponto ficará mais claro.</p>
+
+<ul>
+  <li>O conteúdo de <em>adapter.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">createItinerary</span> <span class="o">=</span> <span class="k">async</span> <span class="p">({</span>
+  <span class="nx">payload</span><span class="p">,</span>
+  <span class="nx">repository</span><span class="p">,</span>
+  <span class="nx">onSuccess</span><span class="p">,</span>
+  <span class="nx">onError</span><span class="p">,</span>
+<span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">await</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">saveItinerary</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">onSuccess</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`There is an error in creation of Itinerary, </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">error</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O adapter é onde temos a nossa lógica de negócio. O importante para um adapter é ter os dados (payload), saber como manipular tais dados, como consultar ou persistir essa informação em algum lugar (repository) e saber como retornar em caso de sucesso (onSuccess) ou em caso de erro (onError).
+  Além do código ser legível e de rápida leitura, os testes unitários podem ser codificados de forma simples.</p>
+
+<ul>
+  <li>O conteúdo de <em>factory.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">adapter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./adapter'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./model'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">repository</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./repository'</span><span class="p">)(</span><span class="nx">model</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">onError</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../helpers/handler-error'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">onSuccess</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../helpers/handler-success'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">({</span>
+  <span class="na">createItinerary</span><span class="p">:</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">adapter</span><span class="p">.</span><span class="nx">createItinerary</span><span class="p">({</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+    <span class="na">repository</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">saveItinerary</span><span class="p">:</span> <span class="nx">repository</span><span class="p">.</span><span class="nx">create</span>
+    <span class="p">},</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="nx">onSuccess</span><span class="p">(</span><span class="nx">response</span><span class="p">),</span>
+    <span class="na">onError</span><span class="p">:</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O nosso factory é responsável por montar as dependências que o adapter precisa e simplesmente retornar um objeto que será chamado no <em>routes.js</em> (createItinerary).
+  Basicamente é importado tudo que o adapter utiliza (repository, model, onError e onSuccess) e construído um objeto (tal objeto é o mesmo que o adapter recebe (payload, repository, onError e onSuccess).</p>
+
+<h4 id="criando-o-ramo-helpers">Criando o ramo helpers</h4>
+
+<p>Em <em>helpers</em> vamos criar dois arquivos <em>handler-error.js</em> e <em>handler-success.js</em>.</p>
+
+<ul>
+  <li>O conteúdo de <em>handler-error.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="mi">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="s1">'IntervalServerError'</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="s1">'internal server error'</span><span class="p">,</span>
+    <span class="na">details</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">details</span> <span class="o">||</span> <span class="p">[</span><span class="nx">error</span><span class="p">],</span>
+    <span class="na">status_code</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="mi">500</span>
+  <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>O conteúdo de <em>handler-success.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">statusCode</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">json</span><span class="p">({});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Os nossos dois handlers são para retornar erro ou sucesso nas chamadas http. Optei por coloca-los em uma pasta separada para componentizar a aplicação e efetuar testes posteriormente.</p>
+
+<h3 id="criando-nosso-server-e-routes">Criando nosso server e routes</h3>
+
+<p>Agora que temos todo o <em>core</em> da nossa aplicação construída, vamos criar os arquivos <em>app.js</em>, <em>server.js</em> e <em>routes.js</em>.</p>
+
+<ul>
+  <li>O conteúdo de <em>app.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span>
+
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'body-parser'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./routes'</span><span class="p">)(</span><span class="nx">app</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O nosso <em>app.js</em> utiliza o framework express para criar a aplicação, efetuar algumas configurações básicas, inicia as rotas e exporta o <code class="highlighter-rouge">app</code>.</p>
+
+<ul>
+  <li>O conteúdo de <em>server.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./config/sequelize'</span><span class="p">)();</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./app'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/environment'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Application is running on port`</span><span class="p">,</span> <span class="nx">config</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">port</span><span class="p">)</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O <em>server.js</em> efetua a conexão com o banco de dados (require(‘./config/sequelize’)()), importa o app e o config e inicia a aplicação ouvindo a porta definida no arquivo <code class="highlighter-rouge">.env</code>.</p>
+
+<ul>
+  <li>O conteúdo de <em>routes.js</em> será o seguinte:
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">createItinerary</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./api/itinerary/factory'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">app</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/itineraries'</span><span class="p">,</span> <span class="nx">createItinerary</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>O <em>routes.js</em> define o nosso endpoint esperando uma chamada http do tipo POST na url <code class="highlighter-rouge">/api/itineraries</code> para executar a função createItinerary que é importada da nossa factory que então chama a função de mesmo nome do adapter.</p>
+
+<h3 id="executando-a-api">Executando a API</h3>
+
+<p>Para executar a aplicação podemos executar o script <strong>dev</strong> que está definido no <code class="highlighter-rouge">package.json</code>. Baixem o projeto que está no <a href="https://github.com/alemanoelsilva/mochila-router-api/tree/ft/createItinerary">github</a>
+.</p>
+
+<h4 id="criando-container-do-postgres">Criando container do Postgres</h4>
+
+<p>Antes de subir a aplicação, vamos criar o nosso container do Postgres. Com o docker ja instalado é preciso apenas executar o comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run <span class="nt">--name</span> some-postgres <span class="nt">-p</span> 5432:5432 <span class="nt">-e</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>postgres <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres123 <span class="nt">-e</span> <span class="nv">POSTGRES_DB</span><span class="o">=</span>mochilaRouter <span class="nt">-d</span> postgres
+</code></pre></div></div>
+
+<p>Se tudo der certo, será exibido o hash do id do container no terminal.</p>
+
+<h4 id="iniciando-a-aplicação">Iniciando a aplicação</h4>
+
+<p>Crie o arquivo <code class="highlighter-rouge">.env</code> com o conteúdo abaixo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">NODE_ENV</span><span class="o">=</span>development
+
+  <span class="nv">POSTGRES_DATABASE</span><span class="o">=</span>mochilaRouter
+  <span class="nv">POSTGRES_USER</span><span class="o">=</span>postgres
+  <span class="nv">POSTGRES_PASS</span><span class="o">=</span>postgres123
+
+  <span class="nv">PORT</span><span class="o">=</span>4000
+</code></pre></div></div>
+
+<p>Como podemos ver, temos os dados para conectar no postgres, são exatamento os mesmo valores que passamos no comando para subir o container. Essas variaveis serão carregadas no nosso arquivo <em>config/environment.js</em> e usadas dentro da aplicação.</p>
+
+<p>O script é <code class="highlighter-rouge">"dev": "nodemon server.js"</code>. Execute:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm run dev
+</code></pre></div></div>
+
+<p>Se tudo ocorrer sem problemas, vocé verá a mensagem <code class="highlighter-rouge">Application is running on port 4000</code> e logs do postgres dropando as tabelas (caso existam) e criando o database e tabelas.</p>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/npm%20run%20dev.jpeg" alt="npm run dev" /></p>
+
+<p>Nesse ponto, utilizando o postman ou o terminal, podemos testar o endpoint que criamos. Pelo terminal, execute o comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> POST  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{ "name": "Teste 2", "isPrivate": true, "description": "Descrição deste roteiro para teste", "duration": 5, "user": "alemanoelsilva@gmail.com", "places": [{ "name": "Place 1", "atraction": "atraçao 1" }] }'</span> http://localhost:4000/api/itineraries 
+</code></pre></div></div>
+
+<p>Como não definimos uma mensagem de retorno (no arquivo <code class="highlighter-rouge">api/helpers/onSuccess</code> é devolvido um objeto vazio). No terminal vamos apenas visualizar <strong>{}</strong></p>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/curl%20post%20itinerary.jpeg" alt="curl POST itineraries" /></p>
+
+<p>Nos logs da API podemos ver que a API realmente executou a query de inserção do roteiro.</p>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/api%20create%20itinerary.jpeg" alt="postgres query insert" /></p>
+
+<p>Enfim, para validar que realmente está tudo ok, podemos acessar o container do Postgres e ver que o registro está lá.</p>
+
+<p>Para entrar no container execute:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker <span class="nb">exec</span> <span class="nt">-it</span> some-postgres bash
+
+  psql <span class="nt">-h</span> localhost <span class="nt">-U</span> postgres <span class="nt">-W</span>
+  <span class="c"># sua senha será solic</span>
+</code></pre></div></div>
+
+<p><strong>Obs:</strong> <em>some-postgres</em> é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. <em>U postgres</em> é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.</p>
+
+<p>E para acessar a tabela <em>itinerary</em>, entre no database mochilaRouter com o comando <code class="highlighter-rouge">\c mochilaRouter</code> e faça a consulta:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">itinerary</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/table%20itinerary.jpeg" alt="table itinerary" /></p>
+
+<h3 id="github">Github</h3>
+
+<p>Para ficar mais fácil obter todos os arquivos de cada post, vou sempre separa-los por branch <a href="https://github.com/alemanoelsilva/mochila-router-api/tree/ft/createItinerary">ft/createItinerary</a></p>
+
+<h3 id="próximos-passos">Próximos passos</h3>
+
+<p>No próximo post vamos efetuar testes unitários e integrados da API.</p>
+
+<p>Até a próxima.</p>
+
+	  </div>
+
+		
+		<ul class="tag_box list-unstyled list-inline">
+		  <li><i class="fa fa-folder-open"></i></li>
+		  
+		  
+			 
+				<li><a href="/categories.html#mochilaRouter-ref">
+					mochilaRouter <span>(2)</span>
+					
+				</a></li>
+			
+		  
+		</ul>
+		  
+
+		
+		<ul class="list-inline">
+		  <li><i class="fa fa-tags"></i></li>
+		  
+		  
+			 
+				<li>
+					<a href="/tags.html#node-ref">
+					node <span>(2)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#express-ref">
+					express <span>(2)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#sequelize-ref">
+					sequelize <span>(2)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#postgres-ref">
+					postgres <span>(2)</span>
+					
+					</a>
+				</li>
+			
+		  
+		  
+		</ul>
+		  
+
+		<hr>
+
+		<div>
+      <section class="share col-sm-6">
+        <h4 class="section-title">Share Post</h4>
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Iniciando o Projeto&via=alemanoelsilva"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <i class="fa fa-twitter fa-lg"></i>
+          Twitter
+        </a>
+        <a class="btn btn-default btn-sm facebook" href="https://www.facebook.com/sharer/sharer.php"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <i class="fa fa-facebook fa-lg"></i>
+          Facebook
+        </a>
+        <a class="btn btn-default btn-sm gplus"
+           onclick="window.open('https://plus.google.com/share?url='+window.location.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <i class="fa fa-google-plus fa-lg"></i>
+          Google+
+        </a>
+      </section>
+
+      <section class="col-sm-6 author">
+        <img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0" class="img-rounded author-image" />
+        <h4 class="section-title author-name">Alexandre</h4>
+        <p class="author-bio">Este é meu blog onde pretendo escrever sobre viagens, dia a dia e algumas coisas sobre Desenvolvimento de Software</p>
+      </section>
+    </div>
+
+    <div class="clearfix"></div>
+
+		<ul class="pager">
+		  
+		  <li class="previous"><a href="/mochilarouter/2018/07/13/primeiros-passos-mochila-router.html" title="Primeiros Passos">&larr; Previous</a></li>
+		  
+		  
+			<li class="next disabled"><a>Next &rarr;</a>
+		  
+		</ul>
+
+		<hr>
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'alemanoelsilva';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+		<footer>
+			<hr/>
+			<p>
+				&copy; 2018 Alexandre with <a href="http://jekyllrb.com/">Jekyll</a>
+			</p>
+		</footer>
+	</div>
+
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'dbyll', 'auto');
+  ga('send', 'pageview');
+</script>
+

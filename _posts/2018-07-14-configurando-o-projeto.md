@@ -374,7 +374,7 @@ Se tudo ocorrer sem problemas, vocé verá a mensagem `Application is running on
 Nesse ponto, utilizando o postman ou o terminal, podemos testar o endpoint que criamos. Pelo terminal, execute o comando:
 
   ```bash
-  curl -X POST  -H "Content-Type: application/json" -d '{ "name": "Teste 2", "isPrivate": true, "description": "Descrição deste roteiro para teste", "duration": 5, "user": "alemanoelsilva@gmail.com", "places": [{ "name": "Place 1", "atraction": "atraçao 1" }] }' http://localhost:4000/api/itineraries 
+  curl -X POST  -H "Content-Type: application/json" -d '{ "name": "Teste 2", "isPrivate": true, "description": "Descrição deste roteiro para teste", "duration": 5, "user": "alemanoelsilva@gmail.com", "places": [{ "name": "Place 1", "attraction": "atraçao 1" }] }' http://localhost:4000/api/itineraries 
   ```
 
 Como não definimos uma mensagem de retorno (no arquivo `api/helpers/onSuccess` é devolvido um objeto vazio). No terminal vamos apenas visualizar **{}**

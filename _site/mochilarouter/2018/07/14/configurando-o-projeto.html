@@ -554,7 +554,7 @@
 
 <p>Nesse ponto, utilizando o postman ou o terminal, podemos testar o endpoint que criamos. Pelo terminal, execute o comando:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> POST  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{ "name": "Teste 2", "isPrivate": true, "description": "Descrição deste roteiro para teste", "duration": 5, "user": "alemanoelsilva@gmail.com", "places": [{ "name": "Place 1", "atraction": "atraçao 1" }] }'</span> http://localhost:4000/api/itineraries 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> POST  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{ "name": "Teste 2", "isPrivate": true, "description": "Descrição deste roteiro para teste", "duration": 5, "user": "alemanoelsilva@gmail.com", "places": [{ "name": "Place 1", "attraction": "atraçao 1" }] }'</span> http://localhost:4000/api/itineraries 
 </code></pre></div></div>
 
 <p>Como não definimos uma mensagem de retorno (no arquivo <code class="highlighter-rouge">api/helpers/onSuccess</code> é devolvido um objeto vazio). No terminal vamos apenas visualizar <strong>{}</strong></p>
@@ -572,10 +572,12 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker <span class="nb">exec</span> <span class="nt">-it</span> some-postgres bash
 
   psql <span class="nt">-h</span> localhost <span class="nt">-U</span> postgres <span class="nt">-W</span>
-  <span class="c"># sua senha será solic</span>
+  <span class="c"># sua senha será solicitada</span>
 </code></pre></div></div>
 
-<p><strong>Obs:</strong> <em>some-postgres</em> é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. <em>U postgres</em> é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.</p>
+<blockquote>
+  <p><strong>Obs:</strong> <em>some-postgres</em> é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. <em>-U postgres</em> é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.</p>
+</blockquote>
 
 <p>E para acessar a tabela <em>itinerary</em>, entre no database mochilaRouter com o comando <code class="highlighter-rouge">\c mochilaRouter</code> e faça a consulta:</p>
 

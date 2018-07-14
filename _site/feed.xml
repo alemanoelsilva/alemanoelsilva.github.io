@@ -391,7 +391,7 @@
 
 &lt;p&gt;Nesse ponto, utilizando o postman ou o terminal, podemos testar o endpoint que criamos. Pelo terminal, execute o comando:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{ &quot;name&quot;: &quot;Teste 2&quot;, &quot;isPrivate&quot;: true, &quot;description&quot;: &quot;Descrição deste roteiro para teste&quot;, &quot;duration&quot;: 5, &quot;user&quot;: &quot;alemanoelsilva@gmail.com&quot;, &quot;places&quot;: [{ &quot;name&quot;: &quot;Place 1&quot;, &quot;atraction&quot;: &quot;atraçao 1&quot; }] }'&lt;/span&gt; http://localhost:4000/api/itineraries 
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; POST  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{ &quot;name&quot;: &quot;Teste 2&quot;, &quot;isPrivate&quot;: true, &quot;description&quot;: &quot;Descrição deste roteiro para teste&quot;, &quot;duration&quot;: 5, &quot;user&quot;: &quot;alemanoelsilva@gmail.com&quot;, &quot;places&quot;: [{ &quot;name&quot;: &quot;Place 1&quot;, &quot;attraction&quot;: &quot;atraçao 1&quot; }] }'&lt;/span&gt; http://localhost:4000/api/itineraries 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Como não definimos uma mensagem de retorno (no arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;api/helpers/onSuccess&lt;/code&gt; é devolvido um objeto vazio). No terminal vamos apenas visualizar &lt;strong&gt;{}&lt;/strong&gt;&lt;/p&gt;
@@ -409,10 +409,12 @@
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  docker &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; some-postgres bash
 
   psql &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; localhost &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; postgres &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;# sua senha será solic&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# sua senha será solicitada&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt; &lt;em&gt;some-postgres&lt;/em&gt; é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. &lt;em&gt;U postgres&lt;/em&gt; é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt; &lt;em&gt;some-postgres&lt;/em&gt; é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. &lt;em&gt;-U postgres&lt;/em&gt; é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;E para acessar a tabela &lt;em&gt;itinerary&lt;/em&gt;, entre no database mochilaRouter com o comando &lt;code class=&quot;highlighter-rouge&quot;&gt;\c mochilaRouter&lt;/code&gt; e faça a consulta:&lt;/p&gt;
 

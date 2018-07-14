@@ -393,7 +393,7 @@ Para entrar no container execute:
   docker exec -it some-postgres bash
 
   psql -h localhost -U postgres -W
-  # sua senha será solic
+  # sua senha será solicitada
 ```  
 
 > **Obs:** *some-postgres* é o nome do container, caso você tenha o criado lembre-se de alterar para o nome correspondente. *U postgres* é o nome do usuário, caso esteja usando outro usuário para acessar o Postgres, lembre-se de também alteralo.  

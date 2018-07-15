@@ -173,30 +173,37 @@
 	  <div class="article_body">
 	  <h2 id="introdução">Introdução</h2>
 
-<p>A ideia desta série de artigos é compartilhar os meus estudos e sempre escrever artigos para me forçar a continuar estudando.</p>
+<p>Nesta série de artigos vou compartilhar meus estudos na construção de APIs. Achei esse método importante para me forçar a sempre estudar e descrever o que estou codificando.</p>
 
-<p>Eu particularmente não gosto de estudar fazendos exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa.</p>
+<p>Eu particularmente não gosto de estudar fazendo exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa.</p>
 
-<p>Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá <code class="highlighter-rouge">json's</code> para o cliente (web e mobile). Não sou criativos para dar nomes, então resolvi chamar essa API de mochilaRouter.</p>
+<p>Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá <code class="highlighter-rouge">json's</code> para o cliente (web e mobile). Não sou criativo para nomes, então resolvi chamar essa API de mochilaRouter.</p>
 
-<p>O que é o projeto <strong>mochilaRouter</strong>?</p>
+<h3 id="o-que-é-o-projeto-mochilarouter">O que é o projeto mochilaRouter?</h3>
 
-<p>Tenho várias ideias e features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem.</p>
+<p>Tenho várias ideias de features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem.</p>
 
-<p>Nesse inicio, vamos criar cinco endpoints para manipulação das informações de um roteiro de viagem.</p>
+<p>Nessa primeira parte, criaremos cinco endpoints para manipulação das informações de um roteiro de viagem.</p>
+
+<ul>
+  <li>GET <code class="highlighter-rouge">/api/itineraries</code>: Obter todos os roteiros</li>
+  <li>GET <code class="highlighter-rouge">/api/itineraries/:id</code>: Obter um determinado roteiro pelo seu ID</li>
+  <li>POST <code class="highlighter-rouge">/api/itineraries</code>: Cadastrar um roteiro</li>
+  <li>PUT <code class="highlighter-rouge">/api/itineraries/:id</code>: Alterar um determinado roteiro pelo seu ID</li>
+  <li>PUT <code class="highlighter-rouge">/api/itineraries/archived</code>: Arquivar um determinado roteiro pelo seu ID</li>
+</ul>
 
 <p>Vamos utilizar as seguintes tecnologias:</p>
 
 <ul>
-  <li>Node
+  <li><a href="https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5">Node</a>
     <ul>
-      <li>Express</li>
-      <li>Sequelize</li>
-      <li>Dotenv</li>
+      <li><a href="http://expressjs.com/pt-br/">Express</a></li>
+      <li><a href="http://docs.sequelizejs.com/">Sequelize</a></li>
     </ul>
   </li>
-  <li>Postgres</li>
-  <li>Docker</li>
+  <li><a href="https://www.postgresql.org/about/">Postgres</a></li>
+  <li><a href="https://blog.codeship.com/why-docker/">Docker</a></li>
 </ul>
 
 <h3 id="organização-de-pastas-que-vamos-adotar">Organização de pastas que vamos adotar</h3>
@@ -204,7 +211,7 @@
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  api
   |- helpers
       |- handler-error.js
-      |- handler-sucess.js
+      |- handler-success.js
   |- itinerary
       |- adapter.js
       |- factory.js

@@ -8,35 +8,39 @@ description: Esse é o primeiro post de uma série onde pretendo construir uma a
 
 ## Introdução
 
-A ideia desta série de artigos é compartilhar os meus estudos e sempre escrever artigos para me forçar a continuar estudando. 
+Nesta série de artigos vou compartilhar meus estudos na construção de APIs. Achei esse método importante para me forçar a sempre estudar e descrever o que estou codificando.
 
-Eu particularmente não gosto de estudar fazendos exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa. 
+Eu particularmente não gosto de estudar fazendo exemplos de tutoriais, prefiro estudar (livros, videos) sobre o assunto em queståo e sempre tentar criar algo para realmente colocar a mão na massa. 
 
-Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá `json's` para o cliente (web e mobile). Não sou criativos para dar nomes, então resolvi chamar essa API de mochilaRouter. 
+Bom, o que quero construir aqui é uma aplicação backend (API) que receberá request e responderá `json's` para o cliente (web e mobile). Não sou criativo para nomes, então resolvi chamar essa API de mochilaRouter. 
 
-O que é o projeto **mochilaRouter**? 
+### O que é o projeto mochilaRouter? 
 
-Tenho várias ideias e features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem. 
+Tenho várias ideias de features para implementar, mas vamos começar pelo básico. Criar roteiros de viagem. 
 
-Nesse inicio, vamos criar cinco endpoints para manipulação das informações de um roteiro de viagem. 
+Nessa primeira parte, criaremos cinco endpoints para manipulação das informações de um roteiro de viagem. 
+
+  - GET `/api/itineraries`: Obter todos os roteiros
+  - GET `/api/itineraries/:id`: Obter um determinado roteiro pelo seu ID
+  - POST `/api/itineraries`: Cadastrar um roteiro
+  - PUT `/api/itineraries/:id`: Alterar um determinado roteiro pelo seu ID
+  - PUT `/api/itineraries/archived`: Arquivar um determinado roteiro pelo seu ID
 
 Vamos utilizar as seguintes tecnologias: 
 
-- Node
-  - Express
-  - Sequelize
-  - Dotenv
-- Postgres
-- Docker
+- [Node](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
+  - [Express](http://expressjs.com/pt-br/)
+  - [Sequelize](http://docs.sequelizejs.com/)
+- [Postgres](https://www.postgresql.org/about/)
+- [Docker](https://blog.codeship.com/why-docker/)
 
 ### Organização de pastas que vamos adotar
   
-
 ```
   api
   |- helpers
       |- handler-error.js
-      |- handler-sucess.js
+      |- handler-success.js
   |- itinerary
       |- adapter.js
       |- factory.js

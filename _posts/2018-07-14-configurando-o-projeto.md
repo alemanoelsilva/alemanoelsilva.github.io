@@ -28,7 +28,7 @@ npm install --save express nodemon sequelize dotenv pg pg-hstore
 
 Após a instalação, esses pacotes estarão listados no seu arquivo `package.json`.
 
-Os pacotes *sequelize*, *pg*, *pg-hstore* são necessários para a API se comunicar com o Postgres. *dotent* é utilizado parra carregar as variaveis de ambiente da aplicação, o *nodemon* é um watcher para verificar alterações no código para o servidor ser carregado automaticamente. Já o *express* é o nosso framework para criar abstrações de rotas, middlewares e outras funções que facilitam a criação de serviços.
+Os pacotes *sequelize*, *pg*, *pg-hstore* são necessários para a API se comunicar com o Postgres. *dotenv* é utilizado parra carregar as variaveis de ambiente da aplicação, o *nodemon* é um watcher para verificar alterações no código para o servidor ser carregado automaticamente. Já o *express* é o nosso framework para criar abstrações de rotas, middlewares e outras funções que facilitam a criação de serviços.
 
 ## Estrutura do projeto
 
@@ -38,7 +38,7 @@ Como vimos no post anterior, precisamos criar uma estrutura igual a essa;
   api
   |- helpers
       |- handler-error.js
-      |- handler-sucess.js
+      |- handler-success.js
   |- itinerary
       |- adapter.js
       |- factory.js
@@ -285,7 +285,7 @@ Agora que temos todo o *core* da nossa aplicação construída, vamos criar os a
 
   + O conteúdo de _app.js_ será o seguinte: 
   ```js
-    'use strict'
+    'use strict';
 
     const express = require('express');
     const bodyParser = require('body-parser');
@@ -304,7 +304,7 @@ Agora que temos todo o *core* da nossa aplicação construída, vamos criar os a
 
   + O conteúdo de _server.js_ será o seguinte: 
   ```js
-    'use strict'
+    'use strict';
 
     require('./config/sequelize')();
 

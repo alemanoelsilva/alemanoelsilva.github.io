@@ -194,7 +194,7 @@
 
 <p>Após a instalação, esses pacotes estarão listados no seu arquivo <code class="highlighter-rouge">package.json</code>.</p>
 
-<p>Os pacotes <em>sequelize</em>, <em>pg</em>, <em>pg-hstore</em> são necessários para a API se comunicar com o Postgres. <em>dotent</em> é utilizado parra carregar as variaveis de ambiente da aplicação, o <em>nodemon</em> é um watcher para verificar alterações no código para o servidor ser carregado automaticamente. Já o <em>express</em> é o nosso framework para criar abstrações de rotas, middlewares e outras funções que facilitam a criação de serviços.</p>
+<p>Os pacotes <em>sequelize</em>, <em>pg</em>, <em>pg-hstore</em> são necessários para a API se comunicar com o Postgres. <em>dotenv</em> é utilizado parra carregar as variaveis de ambiente da aplicação, o <em>nodemon</em> é um watcher para verificar alterações no código para o servidor ser carregado automaticamente. Já o <em>express</em> é o nosso framework para criar abstrações de rotas, middlewares e outras funções que facilitam a criação de serviços.</p>
 
 <h2 id="estrutura-do-projeto">Estrutura do projeto</h2>
 
@@ -203,7 +203,7 @@
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  api
   |- helpers
       |- handler-error.js
-      |- handler-sucess.js
+      |- handler-success.js
   |- itinerary
       |- adapter.js
       |- factory.js
@@ -463,7 +463,7 @@
 
 <ul>
   <li>O conteúdo de <em>app.js</em> será o seguinte:
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'body-parser'</span><span class="p">);</span>
@@ -484,7 +484,7 @@
 
 <ul>
   <li>O conteúdo de <em>server.js</em> será o seguinte:
-    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span><span class="p">;</span>
 
 <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/sequelize'</span><span class="p">)();</span>
 

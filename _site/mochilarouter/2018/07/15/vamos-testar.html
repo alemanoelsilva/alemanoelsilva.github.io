@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vamos fazer alguns testes?</title>
+	
+	<meta name="description" content="Agora que você já sabe o que é o mochilaRouter, vamos iniciar o projeto e suas configurações.">
+	
+	<meta name="author" content="Alexandre">
+
+	<!-- Enable responsive viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le styles -->
+	<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+	<link href="/assets/css/style.css" rel="stylesheet">
+
+	<!-- Le fav and touch icons -->
+	<!-- Update these with your own images
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	-->
+
+	<link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+</head>
+
+<body>
+	<nav class="navbar navbar-default visible-xs" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://github.com/alemanoelsilva">
+				<i class="fa fa-github"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://twitter.com/alemanoelsilva">
+				<i class="fa fa-twitter"></i>
+			</a>
+			
+			
+			<a type="button" class="navbar-toggle nav-link" href="mailto:alemanoelsilva@gmail.com">
+				<i class="fa fa-envelope"></i>
+			</a>
+			
+			<a class="navbar-brand" href="/">
+				<img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0?s=35" class="img-circle" />
+				Alexandre M Silva
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/categories.html">Categorias</a></li>
+				<li><a href="/tags.html">Tags</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
+
+	<!-- nav-menu-dropdown -->
+	<div class="btn-group hidden-xs" id="nav-menu">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<i class="fa fa-bars"></i>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/categories.html"><i class="fa fa-folder"></i>Categorias</a></li>
+			<li><a href="/tags.html"><i class="fa fa-tags"></i>Tags</a></li>
+			<li class="divider"></li>
+			<li><a href="#"><i class="fa fa-arrow-up"></i>Top of Page</a></li>
+		</ul>
+	</div>
+
+	<div class="col-sm-3 sidebar hidden-xs" style="background: url(https://images.wallpaperscraft.com/image/stars_space_sky_glitter_116409_1920x1080.jpg) no-repeat !important;">
+		<!-- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">Alexandre M Silva</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Este é meu blog onde pretendo escrever sobre viagens, dia a dia e algumas coisas sobre Desenvolvimento de Software
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/alemanoelsilva">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/alemanoelsilva">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="mailto:alemanoelsilva@gmail.com">
+				<i class="fa fa-envelope fa-lg"></i>
+			</a>
+		</li>
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://pinterest.com/alemanoelsilva">
+				<i class="fa fa-pinterest fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/alemanoelsilva">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/feed.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+<!-- sidebar.html end -->
+
+	</div>
+
+	<div class="col-sm-9 col-sm-offset-3">
+		<div class="page-header">
+  <h1>Vamos fazer alguns testes? </h1>
+</div>
+	
+<article>
+
+	<div class="col-sm-10">
+	 <span class="post-date">
+	   
+	   July 
+	   15th,
+	   
+	   2018
+	 </span>
+	  <div class="article_body">
+	  <h2 id="mas-antes">Mas antes…</h2>
+
+<p>Para você conseguir escrever os primeiros testes unitários, vamos refatorar alguns pontos da aplicação.</p>
+
+<h3 id="refatorando-nossos-arquivos-de-configuração">Refatorando nossos arquivos de configuração</h3>
+
+<p>O primeiro ponto de mudança será o arquivo <em>sequelize.js</em>. Vamos incluir um objeto que retorna três funçóes:</p>
+<ul>
+  <li>Connect: função que recebe três parâmetros, <em>database</em>, <em>user</em> e <em>pass</em> e efetua a conexão com o Postgres.</li>
+  <li>Disconnect: função para fechar a conexão com o Postgres.</li>
+  <li>getConnection: função para retornar a instância de uma conexão.</li>
+</ul>
+
+<p>A função <em>connect</em> agora não realiza mais o sincronismo com o banco de dados (<code class="highlighter-rouge">connection.sync(...)</code>), agora essa responsabilidade será de cada modelo.</p>
+
+<p>O arquivo <em>sequelize.js</em> ficou da seguinte forme:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'sequelize'</span><span class="p">);</span>
+
+  <span class="kd">let</span> <span class="nx">connection</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">sequelizeDB</span> <span class="o">=</span> <span class="p">({</span>
+    <span class="na">connect</span><span class="p">:</span> <span class="k">async</span> <span class="p">({</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">connection</span><span class="p">)</span> <span class="k">return</span> <span class="nx">connection</span><span class="p">;</span>
+
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">(</span><span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">host</span><span class="p">:</span> <span class="s1">'localhost'</span><span class="p">,</span>
+          <span class="na">dialect</span><span class="p">:</span> <span class="s1">'postgres'</span><span class="p">,</span>
+          <span class="na">operatorsAliases</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">});</span>
+
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Database connected </span><span class="p">${</span><span class="nx">database</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">connection</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`There is an error in the connection Postgres </span><span class="p">${</span><span class="nx">error</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="na">disconnect</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">connection</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="na">getConnection</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">connection</span>
+
+  <span class="p">});</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">sequelizeDB</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ainda na pasta <em>config</em>, temos o arquivo de variaveis de ambiente <em>environment.js</em>. A mudança significativa aqui é a atribuição do valor na variavel database, passamos a validar se a aplicação está sendo executada em ambiente de teste, o arquivo ficou da seguinte forma:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="nx">require</span><span class="p">(</span><span class="s1">'dotenv'</span><span class="p">).</span><span class="nx">load</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">ENVIRONMENT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">TEST</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">,</span>
+    <span class="na">DEV</span><span class="p">:</span> <span class="s1">'development'</span><span class="p">,</span>
+    <span class="na">PROD</span><span class="p">:</span> <span class="s1">'production'</span>
+  <span class="p">};</span>
+
+  <span class="kd">const</span> <span class="nx">env</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="nx">ENVIRONMENT</span><span class="p">.</span><span class="nx">DEV</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">vars</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">env</span><span class="p">,</span>
+    <span class="na">app</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">port</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span>
+    <span class="p">},</span>
+    <span class="na">db</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">database</span><span class="p">:</span> <span class="nx">env</span> <span class="o">===</span> <span class="nx">ENVIRONMENT</span><span class="p">.</span><span class="nx">TEST</span> <span class="p">?</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_DATABASE_TEST</span> <span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_DATABASE</span><span class="p">,</span>
+      <span class="na">user</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_USER</span><span class="p">,</span>
+      <span class="na">pass</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">POSTGRES_PASS</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">vars</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Como podemos ver, se o ambiente (NODE_ENV) for de teste, atribuímos a database o valor de POSTGRES_DATABASE_TEST, caso contrário, o valor de database será POSTGRES_DATABASE.</p>
+
+<p>Vamos partir para os arquivos <em>server.js</em> e <em>app.js</em>.</p>
+
+<p>O nosso <em>app.js</em> mudou pouca coisa, apenas encapsulamos nossa configuração numa função e a exportamos.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'body-parser'</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+    <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'public'</span><span class="p">)));</span>
+
+    <span class="nx">require</span><span class="p">(</span><span class="s1">'./routes'</span><span class="p">)(</span><span class="nx">app</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">app</span><span class="p">;</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<p>Porque fizemos isso? 
+No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o banco de dados Postgres e depois iniciar o servidor. Isso é necessário porque o nome modelo passa a utilizar a função <code class="highlighter-rouge">getConnection</code> para então criar os modelos da aplicação.</p>
+
+<p>O arquivo ficou assim:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/sequelize'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./app'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">app</span><span class="p">:</span> <span class="p">{</span> <span class="nx">port</span> <span class="p">},</span> <span class="na">db</span><span class="p">:</span> <span class="p">{</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config/environment'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">connect</span><span class="p">({</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">});</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="nx">app</span><span class="p">().</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Application is running on port </span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">};</span>
+
+  <span class="nx">init</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Importamos a função <code class="highlighter-rouge">connect</code> do nosso arquivo de configuração do Sequelize e efetuamos a conexão passando o database, usuário e senha. Após a conexão ser efetuar com sucesso (o <code class="highlighter-rouge">response</code> é valorizado) iniciamos nosso servidor executando a função <code class="highlighter-rouge">app()</code> que retorna o app construído no arquivo <em>app.js</em>.</p>
+
+<h3 id="refatorando-nosso-modelo">Refatorando nosso modelo</h3>
+
+<p>Agora falta apenas refatorar o código no nosso modelo que está na pasta api. No nosso modelo, vamos importar a função <code class="highlighter-rouge">getConnection</code> do arquivo de configuração do Sequelize para definirmos o modelo. Assim que o modelo estiver pronto, vamos fazer o sincronismo no banco de dados utilizando a função <code class="highlighter-rouge">sync(...)</code>.</p>
+
+<p>O arquivo <em>model.js</em> ficou assim:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'sequelize'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">getConnection</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../config/sequelize'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">Itinerary</span> <span class="o">=</span> <span class="nx">getConnection</span><span class="p">().</span><span class="nx">define</span><span class="p">(</span><span class="s1">'itinerary'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">_id</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">UUID</span><span class="p">,</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'_id'</span><span class="p">,</span>
+      <span class="na">primaryKey</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">UUIDV4</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">isPrivate</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">defaultValue</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">isActive</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">BOOLEAN</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">defaultValue</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">description</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">duration</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">INTEGER</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">STRING</span>
+    <span class="p">},</span>
+    <span class="na">places</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">ARRAY</span><span class="p">(</span><span class="nx">Sequelize</span><span class="p">.</span><span class="nx">JSON</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="na">createdAt</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">DATE</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">defaultValue</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">NOW</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">updatedAt</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">DATE</span><span class="p">,</span>
+      <span class="na">allowNull</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span> <span class="p">{</span>
+    <span class="na">tableName</span><span class="p">:</span> <span class="s1">'itinerary'</span><span class="p">,</span>
+    <span class="na">timestamps</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">});</span>
+
+  <span class="nx">Itinerary</span><span class="p">.</span><span class="nx">sync</span><span class="p">({</span> <span class="na">force</span><span class="p">:</span> <span class="kc">false</span> <span class="p">});</span>
+
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Itinerary</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>O parâmetro <code class="highlighter-rouge">{ force: false }</code> não força o Postgres a deletar e criar novamente a tabela.</p>
+
+<p>Feito esse refatoração, vamos enfim para os testes.</p>
+
+<h3 id="efetuando-teste-unitário">Efetuando teste unitário</h3>
+
+<h3 id="instalando-e-configurando-o-jest">Instalando e configurando o Jest</h3>
+
+<h3 id="criando-nossos-primeiros-testes">Criando nossos primeiros testes</h3>
+
+<h4 id="itinerary-adapter">Itinerary Adapter</h4>
+<h4 id="itinerary-repository">Itinerary Repository</h4>
+<h4 id="handler-success">Handler Success</h4>
+<h4 id="handler-error">Handler Error</h4>
+
+<h3 id="github">Github</h3>
+
+<p>Para ficar mais fácil obter todos os arquivos de cada post, vou sempre separa-los por branch <a href="https://github.com/alemanoelsilva/mochila-router-api/tree/ft/createItinerary">ft/createItinerary</a></p>
+
+<h3 id="próximos-passos">Próximos passos</h3>
+
+<p>No próximo post vamos efetuar testes unitários e integrados da API.</p>
+
+<p>Até a próxima.</p>
+
+	  </div>
+
+		
+		<ul class="tag_box list-unstyled list-inline">
+		  <li><i class="fa fa-folder-open"></i></li>
+		  
+		  
+			 
+				<li><a href="/categories.html#mochilaRouter-ref">
+					mochilaRouter <span>(3)</span>
+					
+				</a></li>
+			
+		  
+		</ul>
+		  
+
+		
+		<ul class="list-inline">
+		  <li><i class="fa fa-tags"></i></li>
+		  
+		  
+			 
+				<li>
+					<a href="/tags.html#node-ref">
+					node <span>(3)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#express-ref">
+					express <span>(3)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#sequelize-ref">
+					sequelize <span>(3)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#postgres-ref">
+					postgres <span>(3)</span>
+					
+					</a>
+				</li>
+			
+		  
+		  
+		</ul>
+		  
+
+		<hr>
+
+		<div>
+      <section class="share col-sm-6">
+        <h4 class="section-title">Share Post</h4>
+        <a class="btn btn-default btn-sm twitter" href="http://twitter.com/share?text=Vamos fazer alguns testes?&via=alemanoelsilva"
+           onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <i class="fa fa-twitter fa-lg"></i>
+          Twitter
+        </a>
+        <a class="btn btn-default btn-sm facebook" href="https://www.facebook.com/sharer/sharer.php"
+           onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <i class="fa fa-facebook fa-lg"></i>
+          Facebook
+        </a>
+        <a class="btn btn-default btn-sm gplus"
+           onclick="window.open('https://plus.google.com/share?url='+window.location.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <i class="fa fa-google-plus fa-lg"></i>
+          Google+
+        </a>
+      </section>
+
+      <section class="col-sm-6 author">
+        <img src="//www.gravatar.com/avatar/3c1fc52e204750280efe590a62ceb2d0" class="img-rounded author-image" />
+        <h4 class="section-title author-name">Alexandre</h4>
+        <p class="author-bio">Este é meu blog onde pretendo escrever sobre viagens, dia a dia e algumas coisas sobre Desenvolvimento de Software</p>
+      </section>
+    </div>
+
+    <div class="clearfix"></div>
+
+		<ul class="pager">
+		  
+		  <li class="previous"><a href="/mochilarouter/2018/07/14/configurando-o-projeto.html" title="Iniciando o Projeto">&larr; Previous</a></li>
+		  
+		  
+			<li class="next disabled"><a>Next &rarr;</a>
+		  
+		</ul>
+
+		<hr>
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+    
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'alemanoelsilva';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+		<footer>
+			<hr/>
+			<p>
+				&copy; 2018 Alexandre with <a href="http://jekyllrb.com/">Jekyll</a>
+			</p>
+		</footer>
+	</div>
+
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
+</body>
+</html>
+
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'dbyll', 'auto');
+  ga('send', 'pageview');
+</script>
+

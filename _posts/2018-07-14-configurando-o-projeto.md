@@ -412,6 +412,6 @@ Para ficar mais fácil obter todos os arquivos de cada post, vou sempre separa-l
 
 ### Próximos passos
 
-No próximo post vamos efetuar testes unitários e integrados da API. 
+No próximo post vamos efetuar testes unitários da API. 
 
 Até a próxima.

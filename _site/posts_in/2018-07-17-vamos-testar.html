@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Vamos fazer alguns testes?</title>
 	
-	<meta name="description" content="Agora que você já sabe o que é o mochilaRouter, vamos iniciar o projeto e suas configurações.">
+	<meta name="description" content="Criado nosso primeiro endpoint, vamos configurar e executar alguns testes untiários.">
 	
 	<meta name="author" content="Alexandre">
 
@@ -159,16 +159,12 @@
 		<div class="page-header">
   <h1>Vamos fazer alguns testes? </h1>
 </div>
-	
+
 <article>
 
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   July 
-	   15th,
-	   
-	   2018
 	 </span>
 	  <div class="article_body">
 	  <h2 id="mas-antes">Mas antes…</h2>
@@ -177,7 +173,7 @@
 
 <h3 id="refatorando-nossos-arquivos-de-configuração">Refatorando nossos arquivos de configuração</h3>
 
-<p>O primeiro ponto de mudança será o arquivo <em>sequelize.js</em>. Vamos incluir um objeto que retorna três funçóes:</p>
+<p>O primeiro ponto de mudança será o arquivo <em>sequelize.js</em>. Vamos incluir um objeto que retorna três funções:</p>
 <ul>
   <li>Connect: função que recebe três parâmetros, <em>database</em>, <em>user</em> e <em>pass</em> e efetua a conexão com o Postgres.</li>
   <li>Disconnect: função para fechar a conexão com o Postgres.</li>
@@ -280,7 +276,7 @@
 </code></pre></div></div>
 
 <p>Porque fizemos isso? 
-No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o banco de dados Postgres e depois iniciar o servidor. Isso é necessário porque o nome modelo passa a utilizar a função <code class="highlighter-rouge">getConnection</code> para então criar os modelos da aplicação.</p>
+No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o banco de dados Postgres e depois iniciar o servidor. Isso é necessário porque o nosso modelo passou a utilizar a função <code class="highlighter-rouge">getConnection</code> para obter a conexão do banco de dados.</p>
 
 <p>O arquivo ficou assim:</p>
 
@@ -371,28 +367,292 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
   <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Itinerary</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>O parâmetro <code class="highlighter-rouge">{ force: false }</code> não força o Postgres a deletar e criar novamente a tabela.</p>
-
-<p>Feito esse refatoração, vamos enfim para os testes.</p>
-
-<h3 id="efetuando-teste-unitário">Efetuando teste unitário</h3>
+<p>Feito essa refatoração, vamos enfim para os testes.</p>
 
 <h3 id="instalando-e-configurando-o-jest">Instalando e configurando o Jest</h3>
 
+<p>Precisamos instalar 2 pacotes para rodar os testes unitários, no terminal, execute o comando abaixo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm <span class="nb">install</span> <span class="nt">--save-dev</span> jest jest-plugin-context
+</code></pre></div></div>
+
+<p>Além disso, precisamos criar um arquivo de <em>setup</em> e incluir algumas configurações do jest no <code class="highlighter-rouge">package.json</code>.</p>
+
+<p>Vamos incluir o objeto do jest no <code class="highlighter-rouge">package.json</code> com as seguintes configurações:</p>
+
+<ul>
+  <li>verbose: Indica a forma como os testes são impressos no terminal.</li>
+  <li>setupTestFrameworkScriptFile: Essa propriedade mapeia o caminho do arquivo de <em>setup.js</em>.</li>
+  <li>collectCoverageFrom: Mapeia os diretórios que serão analisados para a cobertura de teste.</li>
+  <li>coverageReporters: Formato de reporte dos testes.</li>
+  <li>coverageThreshold: Estabelece a taxa de cobertura mínima dos nossos testes.</li>
+  <li>setupFiles: Recebe um array com configurações opcionais.</li>
+</ul>
+
+<p>O objeto do jest fica da seguinte forma:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"jest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"verbose"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"setupTestFrameworkScriptFile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./test/setup.js"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"collectCoverageFrom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"api/**/*.js"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"!**/node_modules/**"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"!**/config/**"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"coverageReporters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"text-summary"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"html"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"coverageThreshold"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"global"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"branches"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"functions"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"lines"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"statements"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"setupFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"jest-plugin-context/setup"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Além do objeto do jest, vamos incluir o script para executar os testes unitários a partir do comando <code class="highlighter-rouge">npm run test:unit</code>.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="s2">"test:unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=test jest --coverage --runInBand --forceExit ./test/unit/*.spec.js"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Agora vamos criar nosso arquivo de <em>setup.js</em>. Na raiz do projeto crie uma pasta chamada <em>test</em>, dentro dela crie o arquivo <em>setup.js</em>. O seu conteúdo será o seguinte:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../config/sequelize'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="na">db</span><span class="p">:</span> <span class="p">{</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../config/environment'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">await</span> <span class="nx">connect</span><span class="p">({</span> <span class="nx">database</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span> <span class="p">});</span>
+  <span class="p">};</span>
+
+  <span class="nx">init</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Esse código importa as variaveis de ambiente e a função <code class="highlighter-rouge">connect</code> do nosso arquivo de configuração do banco de dados e efetua a conexão com o banco de dados. Esse setup é necessário apenas para os testes integrados.</p>
+
+<h3 id="personalizando-nosso-postgres">Personalizando nosso Postgres</h3>
+
+<p>Ao efetuarmos testes na api, o ideal é não utilizarmos o banco de dados da aplicação, por isso, precisamos criar um database especifico para testes, aqui vamos criar um database chamado <code class="highlighter-rouge">mochilarouter_test</code>. Para isso, vamos criar uma imagem do postgres personalizada.</p>
+
+<p>Na raiz do projeto, crie um arquivo chamado <code class="highlighter-rouge">Dockerfile</code> (sem nenhuma extensão). O contéudo dele será bem simples.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM postgres:latest
+
+COPY ./scripts/create_db.sh     /docker-entrypoint-initdb.d/10-create_db.sh
+</code></pre></div></div>
+
+<p>Estamos construíndo a imagem a partir da imagem base do postgres:latest e copiando um script para dentro da imagem.</p>
+
+<p>Na raiz do projeto, crie a pasta <em>scripts</em> e dentro dela crie o arquivo <em>create_db.sh.js</em>, seu
+contéudo será:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#!/bin/bash</span>
+  <span class="nb">set</span> <span class="nt">-e</span>
+
+  <span class="nv">POSTGRES</span><span class="o">=</span><span class="s2">"psql --username postgres"</span>
+
+  <span class="nb">echo</span> <span class="s2">"Creating database mochilarouter"</span>
+
+  <span class="nv">$POSTGRES</span> <span class="o">&lt;&lt;</span><span class="no">EOSQL</span><span class="sh">
+  CREATE DATABASE mochilarouter OWNER postgres;
+</span><span class="no">  EOSQL
+
+</span>  <span class="nb">echo</span> <span class="s2">"Creating database mochilarouter_test"</span>
+
+  <span class="nv">$POSTGRES</span> <span class="o">&lt;&lt;</span><span class="no">EOSQL</span><span class="sh">
+  CREATE DATABASE mochilarouter_test OWNER postgres;
+</span><span class="no">  EOSQL
+</span></code></pre></div></div>
+
+<p>Esse script executa dois comandos, um para criar o database <code class="highlighter-rouge">mochilarouter</code> e outro para criar outro database <code class="highlighter-rouge">mochilarouter_test</code>.</p>
+
+<p>Agora é preciso construír a imagem com o comando <code class="highlighter-rouge">docker build -t usuario/postgres .</code>. O docker vai gerar uma imagem com o nome passado após a opção <code class="highlighter-rouge">-t</code>.</p>
+
+<p>No meu caso, eu criei a imagem com o nome <code class="highlighter-rouge">alemanoelsilva/postgres</code>.</p>
+
+<p>Falta apenas criar um container a partir dessa imagem, execute o comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span> alemanoelsilva-postgres <span class="nt">-p</span> 5432:5432 <span class="nt">-e</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>postgres <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres123 <span class="nt">-d</span> alemanoelsilva/postgres
+</code></pre></div></div>
+
+<blockquote>
+  <p>Lembrando, altere o nome da imagem e container de acordo com o que você definiu.</p>
+</blockquote>
+
+<p>Pronto, vamos criar testes agora?</p>
+
 <h3 id="criando-nossos-primeiros-testes">Criando nossos primeiros testes</h3>
 
+<p>Um benefício que temos ao utilizar essa ideia de arquitetura, é que podemos fazer testes unitários que podem testar cada componente de forma simples e prática.</p>
+
+<p>Os nossos testes estarão separados em 4 arquivos, sendo eles:</p>
+
+<ul>
+  <li>itinerary-adapter.spec.js</li>
+  <li>itinerary-repository.spec.js</li>
+  <li>handler-error.spec.js</li>
+  <li>handler-success.spec.js</li>
+</ul>
+
 <h4 id="itinerary-adapter">Itinerary Adapter</h4>
+
+<p>Dentro da pasta <em>test</em>, crie outra pasta chamada <em>unit</em> e dentro dessa pasta crie nosso primeiro arquivo de teste <code class="highlighter-rouge">itinerary-adapter.spec.js</code>.
+Vamos voltar ao nosso adapter, quais as dependências que ele recebe?</p>
+
+<p><img src="" alt="adapter itinerary" /></p>
+
+<p>Como podemos ver, nosso adapter recebe 4 parâmetros, <em>payload</em>, <em>repository</em>, <em>onSuccess</em>, e <em>onError</em>.</p>
+
+<p>Podemos criar um mock para simular esses objetos. Algo como:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">mock</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">repository</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">saveItinerary</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="nx">obj</span> <span class="o">=&gt;</span> <span class="nx">obj</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span>
+      <span class="c1">// dados do payload</span>
+    <span class="p">},</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
+    <span class="na">onError</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">name</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="s1">'IntervalServerError'</span><span class="p">,</span>
+      <span class="na">message</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="s1">'internal server error'</span><span class="p">,</span>
+      <span class="na">details</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">details</span> <span class="o">||</span> <span class="p">[</span><span class="nx">err</span><span class="p">],</span>
+      <span class="na">status_code</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="mi">500</span>
+    <span class="p">}))</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<p>Temos um mock com exatamente os 4 objetos que o adapter recebe. Excluindo a propriedade payload, as demais são funções, então utilizamos o <code class="highlighter-rouge">jest.fn()</code> que funciona de maneira parecida a função <code class="highlighter-rouge">spy</code> do <a href="http://sinonjs.org/releases/v4.2.2/spies/">sinon</a>. Basicamente, podemos executar o adapter e conseguimos validar se as funções saveItinerary, onSuccess e onError foram executadas ou não, ou se foram executadas 1 ou mais vezes.</p>
+
+<p>Para entender melhor, o seguinte teste valida o cenário de sucesso:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">test</span><span class="p">(</span><span class="s1">'Should create an Itinerary with success'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">await</span> <span class="nx">createItinerary</span><span class="p">(</span><span class="nx">mock</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">saveItinerary</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onError</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Executamos a função <em>createItinerary</em> passando o nosso mock e em seguida, validamos se as funções <em>saveItinerary</em> e <em>onSuccess</em> foram chamadas 1 vez, e que a função <em>onError</em> não foi chamada.</p>
+
+<p>O nosso segundo teste valida o cenário de erro:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">test</span><span class="p">(</span><span class="s1">'Should return an error, invalid Itinerary'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">mock</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">saveItinerary</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'invalid Itinerary'</span><span class="p">));</span>
+
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">createItinerary</span><span class="p">(</span><span class="nx">mock</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onError</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">toHaveProperty</span><span class="p">(</span><span class="s1">'status_code'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">,</span> <span class="s1">'message'</span><span class="p">,</span> <span class="s1">'details'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status_code</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'invalid Itinerary'</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>A primeira coisa que fizemos foi modificar a função <code class="highlighter-rouge">saveItinerary</code>, como essa função é assincrona, nos então retornamos uma promessa com um erro <code class="highlighter-rouge">Promise.reject(...)</code>. No adapter, ao executar <code class="highlighter-rouge">await repository.saveItinerary(payload);</code> e for devolvido um erro, esse erro será tratado no nosso catch, e por fim, nossa função <em>onError</em> devolve um erro formatado.</p>
+
+<p>Verificamos que <em>onSuccess</em> não é chamado, e <em>onError</em> é chamado uma única vez.</p>
+
+<p>A seguir validamos nosso response, de fato ele contém um objeto de erro.</p>
+
+<p>Por fim, nosso arquivo <em>itinerary-adapter.spec.js</em> será assim:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">createItinerary</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../api/itinerary/adapter'</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Teste'</span><span class="p">,</span>
+    <span class="na">isPrivate</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">description</span><span class="p">:</span> <span class="s1">'Descrição roteiro para teste'</span><span class="p">,</span>
+    <span class="na">duration</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="na">user</span><span class="p">:</span> <span class="s1">'email_para_teste@gmail.com'</span><span class="p">,</span>
+    <span class="na">places</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Place 1'</span><span class="p">,</span>
+      <span class="na">attraction</span><span class="p">:</span> <span class="s1">'Atração 1'</span>
+    <span class="p">}]</span>
+  <span class="p">};</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s1">'Itinerary Adapter Unit tests'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">mock</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">repository</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">saveItinerary</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="nx">obj</span> <span class="o">=&gt;</span> <span class="nx">obj</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="nx">payload</span><span class="p">,</span>
+      <span class="na">onSuccess</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(),</span>
+      <span class="na">onError</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="na">name</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="s1">'IntervalServerError'</span><span class="p">,</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="s1">'internal server error'</span><span class="p">,</span>
+        <span class="na">details</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">details</span> <span class="o">||</span> <span class="p">[</span><span class="nx">err</span><span class="p">],</span>
+        <span class="na">status_code</span><span class="p">:</span> <span class="nx">err</span><span class="p">.</span><span class="nx">status</span> <span class="o">||</span> <span class="mi">500</span>
+      <span class="p">}))</span>
+    <span class="p">};</span>
+
+    <span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">jest</span><span class="p">.</span><span class="nx">clearAllMocks</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">'Create an Itinerary'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">test</span><span class="p">(</span><span class="s1">'Should create an Itinerary with success'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">await</span> <span class="nx">createItinerary</span><span class="p">(</span><span class="nx">mock</span><span class="p">);</span>
+
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">saveItinerary</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onError</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="nx">test</span><span class="p">(</span><span class="s1">'Should return an error, invalid Itinerary'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">mock</span><span class="p">.</span><span class="nx">repository</span><span class="p">.</span><span class="nx">saveItinerary</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'invalid Itinerary'</span><span class="p">));</span>
+
+        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">createItinerary</span><span class="p">(</span><span class="nx">mock</span><span class="p">);</span>
+
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onSuccess</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">mock</span><span class="p">.</span><span class="nx">onError</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">).</span><span class="nx">toHaveProperty</span><span class="p">(</span><span class="s1">'status_code'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">,</span> <span class="s1">'message'</span><span class="p">,</span> <span class="s1">'details'</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status_code</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'invalid Itinerary'</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Faltou explicar a função <code class="highlighter-rouge">jest.clearAllMocks()</code>, Ela é bem simples, a cada teste executado essa função é executado para limpar os nossos mocks. Se essa função não fosse chamada, no segundo teste, a validação <code class="highlighter-rouge">expect(mock.onSuccess).toHaveBeenCalledTimes(0);</code> retornaria erro, porque no primeiro teste a função onSuccess foi chamada.</p>
+</blockquote>
+
+<p>Antes de executar o comando <code class="highlighter-rouge">npm run test:unit</code>, vamos incluir a variavel <em>POSTGRES_DATABASE_TEST=mochilarouter_test</em> no nosso arquivo <em>.env</em>. Então execute o comando anterior, se tudo estiver ok, você deve ver algo como:</p>
+
+<p><img src="" alt="unit teste itinerary adapter" /></p>
+
 <h4 id="itinerary-repository">Itinerary Repository</h4>
 <h4 id="handler-success">Handler Success</h4>
 <h4 id="handler-error">Handler Error</h4>
 
+<h3 id="cobertura-dos-testes">Cobertura dos testes</h3>
+
 <h3 id="github">Github</h3>
 
-<p>Para ficar mais fácil obter todos os arquivos de cada post, vou sempre separa-los por branch <a href="https://github.com/alemanoelsilva/mochila-router-api/tree/ft/createItinerary">ft/createItinerary</a></p>
+<p>Para ficar mais fácil obter todos os arquivos de cada post, vou sempre separa-los por branch <a href="https://github.com/alemanoelsilva/mochila-router-api/tree/ft/implementationTestsOfCreateItinerary">ft/implementationTestsOfCreateItinerary</a></p>
 
 <h3 id="próximos-passos">Próximos passos</h3>
 
-<p>No próximo post vamos efetuar testes unitários e integrados da API.</p>
+<p>No próximo post vamos efetuar testes integrados da API.</p>
 
 <p>Até a próxima.</p>
 
@@ -403,46 +663,46 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
 		  <li><i class="fa fa-folder-open"></i></li>
 		  
 		  
-			 
+			
 				<li><a href="/categories.html#mochilaRouter-ref">
-					mochilaRouter <span>(3)</span>
+					mochilaRouter <span>(2)</span>
 					
 				</a></li>
 			
 		  
 		</ul>
-		  
+		
 
 		
 		<ul class="list-inline">
 		  <li><i class="fa fa-tags"></i></li>
 		  
 		  
-			 
+			
 				<li>
 					<a href="/tags.html#node-ref">
-					node <span>(3)</span>
+					node <span>(2)</span>
 					,
 					</a>
 				</li>
-			 
+			
 				<li>
 					<a href="/tags.html#express-ref">
-					express <span>(3)</span>
+					express <span>(2)</span>
 					,
 					</a>
 				</li>
-			 
+			
 				<li>
 					<a href="/tags.html#sequelize-ref">
-					sequelize <span>(3)</span>
+					sequelize <span>(2)</span>
 					,
 					</a>
 				</li>
-			 
+			
 				<li>
 					<a href="/tags.html#postgres-ref">
-					postgres <span>(3)</span>
+					postgres <span>(2)</span>
 					
 					</a>
 				</li>
@@ -450,7 +710,7 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
 		  
 		  
 		</ul>
-		  
+		
 
 		<hr>
 
@@ -485,18 +745,18 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="/mochilarouter/2018/07/14/configurando-o-projeto.html" title="Iniciando o Projeto">&larr; Previous</a></li>
+		  <li class="previous disabled"><a>&larr; Anterior</a></li>
 		  
 		  
-			<li class="next disabled"><a>Next &rarr;</a>
+			<li class="next disabled"><a>Próximo &rarr;</a>
 		  
 		</ul>
 
 		<hr>
 	</div>
-	
+
 	<div class="col-sm-2 sidebar-2">
-	
+
 	</div>
 </article>
 <div class="clearfix"></div>

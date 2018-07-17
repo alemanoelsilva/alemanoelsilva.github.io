@@ -353,7 +353,7 @@ Os nossos testes estarão separados em 4 arquivos, sendo eles:
 Dentro da pasta _test_, crie outra pasta chamada _unit_ e dentro dessa pasta crie nosso primeiro arquivo de teste `itinerary-adapter.spec.js`.
 Vamos voltar ao nosso adapter, quais as dependências que ele recebe? 
 
-![adapter itinerary]()
+![adapter itinerary](https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/adapter%20itinerary.png)
 
 Como podemos ver, nosso adapter recebe 4 parâmetros, _payload_, _repository_, _onSuccess_, e _onError_.
 
@@ -483,7 +483,7 @@ Por fim, nosso arquivo _itinerary-adapter.spec.js_ será assim:
 
 Antes de executar o comando `npm run test:unit`, vamos incluir a variavel *POSTGRES_DATABASE_TEST=mochilarouter_test* no nosso arquivo _.env_. Então execute o comando anterior, se tudo estiver ok, você deve ver algo como: 
 
-![unit teste itinerary adapter]()
+![unit teste itinerary adapter](https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/unit%20teste%20itinerary%20adapter.png)
 
 #### Itinerary Repository
 #### Handler Success 

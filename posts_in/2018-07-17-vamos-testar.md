@@ -265,8 +265,12 @@ O objeto do jest fica da seguinte forma:
 Além do objeto do jest, vamos incluir o script para executar os testes unitários a partir do comando `npm run test:unit`. 
 
 ```json
-  { "test:unit": "NODE_ENV=test jest --coverage --runInBand --forceExit ./test/unit/*.spec.js" }
+  { 
+    "test:unit": "NODE_ENV=test jest --coverage --runInBand --forceExit ./test/unit/*.spec.js" 
+  }
 ```
+
+Estamos subrescrevendo o valor da variavel de ambiente `NODE_ENV` e executando o jest passando 3 parâmetros; o `--coverage` vai exibir no final dos testes a taxa de cobertura de cada arquivo testado, o `--runInBand` diz para o jest executar os testes de forma sequencial, o padrão é executar em paralelo, já o `--forceExit` força a finalização do jest, algunas vezes ele fica preso no terminal, teriamos que dar um CONTROL + C. E por fim, dizemos para o jest onde ele deve procurar os arquivos de teste, no nosso caso, ele vai acha-los no _test/unit_ e filtra por todos arquivos terminados em _*.spec.js_
 
 Agora vamos criar nosso arquivo de _setup.js_. Na raiz do projeto crie uma pasta chamada _test_, dentro dela crie o arquivo _setup.js_. O seu conteúdo será o seguinte: 
 
@@ -292,9 +296,9 @@ Ao efetuarmos testes na api, o ideal é não utilizarmos o banco de dados da apl
 Na raiz do projeto, crie um arquivo chamado `Dockerfile` (sem nenhuma extensão). O contéudo dele será bem simples.
 
 ```bash
-FROM postgres:latest
+  FROM postgres:latest
 
-COPY ./scripts/create_db.sh     /docker-entrypoint-initdb.d/10-create_db.sh
+  COPY ./scripts/create_db.sh     /docker-entrypoint-initdb.d/10-create_db.sh
 ```
 
 Estamos construíndo a imagem a partir da imagem base do postgres:latest e copiando um script para dentro da imagem. 
@@ -486,10 +490,106 @@ Antes de executar o comando `npm run test:unit`, vamos incluir a variavel *POSTG
 ![unit teste itinerary adapter](https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/unit%20teste%20itinerary%20adapter.png)
 
 #### Itinerary Repository
-#### Handler Success 
-#### Handler Error
+
+Agora, vamos criar o segundo arquivo para testar o nosso repositorio. Dentro de _test/unit_ crie o arquivo _itinerary-repository.spec.js_. 
+
+O nosso arquivo é bem simples, ele tem apenas uma função que recebe um modelo e retorna um objeto com a função `create`, essa função create recebe um o objeto a ser inserido no banco de dados. 
+
+Para o nosso teste, vamos criar um mock chamado model com uma propriedade create, essa propriedade é uma função (simulando o create do modelo do Sequelize) que executa o `jest.fn`. Com isso conseguimos validar se a função foi chamada na chamada do repositorio.
+
+Nosso arquivo de teste _itinerary-repository.spec.js_ ficará assim: 
+
+```js
+  'use strict';
+
+  const repository = require('../../api/itinerary/repository');
+
+  describe('Itinerary Repository Unit tests', () => {
+    const model = {
+      create: jest.fn()
+    };
+
+    describe('Create an Itinerary', () => {
+      test('Should execute create function', () => {
+        const { create } = repository(model);
+
+        create();
+
+        expect(model.create).toBeCalled;
+      });
+    });
+  });
+```
+
+Importamos o nosso repositorio, e executamos passando o nosso mock. O retorno da função é um objeto create. Ao ser execultada, podemos validar se a função `model.create()` foi chamada. 
+Simples não? 
+
+Aqui validamos apenas se a função foi chamada, no testes integrado vamos validar se essa função realmente vai inserir o registro no banco de dados.
+
+Execute o comando para rodar os testes `npm run test:unit`. Agora a cobertura vai aumentar um pouco.
+
+#### Handler Success e Error
+
+Vamos testar agora os nossos dois handlers de resposta, _handler-success.js_ e _handler-error.js_. 
+
+Teremos dois arquivos de teste, um para cada, mas como o teste será muito parecido, vou explicar o teste do _handler-error.js_ e explicar a diferença para o _handler-success.js_. Vamos lá.
+
+O nosso handler-error é bem simples, e ele é uma função que recebe o `response` do express e retorna uma função que recebe o `error` e ao ser executada formata o erro e devolve para o cliente uma resposta de erro formatada.
+
+Então vamos fazer mais um mock. Temos que mockar o nosso `response` e suas funções `status()` e `json()`. 
+
+Nosso mock ficara assim: 
+
+```js
+  const response = {
+    status: jest.fn(() => ({
+      json: jest.fn()
+    }))
+  };
+```
+
+Aqui nos temos a função status retornando a função json, assim conseguimos executar o response aninhado, `response.status().json()`.
+
+Nosso arquivo de teste _handler-error.spec.js_ será o seguinte: 
+
+```js
+  'use strict';
+
+  const handlerError = require('../../api/helpers/handler-error');
+
+  describe('Handler Error Unit tests', () => {
+    const response = {
+      status: jest.fn(() => ({
+        json: jest.fn()
+      }))
+    };
+
+    const error = new Error('Error for testing');
+
+    describe('Handler Error', () => {
+      test('Should return an object of error treated with values default', async () => {
+        handlerError(response)(error);
+
+        expect(response.status).toBeCalled;
+        expect(response.status().json).toBeCalled;
+      });
+    });
+  });
+```
+
+Como esse handler é de erro, precisamos criar a variavel `error` que será passada no nosso `handlerError(response)(error)`. Depois validamos se as funções status e json foram chamadas.
+
+A diferença para o testes do _handler-success.js_ é o valor da segunda função, vamos chamar o nosso handlerSuccess passando apenas o `response` da seguinte forma `handlerSucces(response)()`.
 
 ### Cobertura dos testes
+
+Apenas com esses testes unitários temos uma boa cobertura de teste. Falta testar o factory e model, mas como esses dois componentes tem dependências internas, vamos testa-los a partir do teste integrado.
+
+Execute o comando `npm run test:unit`.
+
+> Verifique se a imagem do Postgres está de pé.
+
+![coverage unit test](https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/coverage%20teste%20unitario%20create%20itinerary.png)
 
 ### Github
 

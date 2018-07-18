@@ -422,8 +422,12 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
 
 <p>Além do objeto do jest, vamos incluir o script para executar os testes unitários a partir do comando <code class="highlighter-rouge">npm run test:unit</code>.</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="s2">"test:unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=test jest --coverage --runInBand --forceExit ./test/unit/*.spec.js"</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"test:unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NODE_ENV=test jest --coverage --runInBand --forceExit ./test/unit/*.spec.js"</span><span class="w"> 
+  </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+
+<p>Estamos subrescrevendo o valor da variavel de ambiente <code class="highlighter-rouge">NODE_ENV</code> e executando o jest passando 3 parâmetros; o <code class="highlighter-rouge">--coverage</code> vai exibir no final dos testes a taxa de cobertura de cada arquivo testado, o <code class="highlighter-rouge">--runInBand</code> diz para o jest executar os testes de forma sequencial, o padrão é executar em paralelo, já o <code class="highlighter-rouge">--forceExit</code> força a finalização do jest, algunas vezes ele fica preso no terminal, teriamos que dar um CONTROL + C. E por fim, dizemos para o jest onde ele deve procurar os arquivos de teste, no nosso caso, ele vai acha-los no <em>test/unit</em> e filtra por todos arquivos terminados em <em>*.spec.js</em></p>
 
 <p>Agora vamos criar nosso arquivo de <em>setup.js</em>. Na raiz do projeto crie uma pasta chamada <em>test</em>, dentro dela crie o arquivo <em>setup.js</em>. O seu conteúdo será o seguinte:</p>
 
@@ -447,9 +451,9 @@ No arquivo <em>server.js</em>, precisamos estabelecer primeiro a conexão com o 
 
 <p>Na raiz do projeto, crie um arquivo chamado <code class="highlighter-rouge">Dockerfile</code> (sem nenhuma extensão). O contéudo dele será bem simples.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM postgres:latest
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  FROM postgres:latest
 
-COPY ./scripts/create_db.sh     /docker-entrypoint-initdb.d/10-create_db.sh
+  COPY ./scripts/create_db.sh     /docker-entrypoint-initdb.d/10-create_db.sh
 </code></pre></div></div>
 
 <p>Estamos construíndo a imagem a partir da imagem base do postgres:latest e copiando um script para dentro da imagem.</p>
@@ -510,7 +514,7 @@ contéudo será:</p>
 <p>Dentro da pasta <em>test</em>, crie outra pasta chamada <em>unit</em> e dentro dessa pasta crie nosso primeiro arquivo de teste <code class="highlighter-rouge">itinerary-adapter.spec.js</code>.
 Vamos voltar ao nosso adapter, quais as dependências que ele recebe?</p>
 
-<p><img src="" alt="adapter itinerary" /></p>
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/adapter%20itinerary.png" alt="adapter itinerary" /></p>
 
 <p>Como podemos ver, nosso adapter recebe 4 parâmetros, <em>payload</em>, <em>repository</em>, <em>onSuccess</em>, e <em>onError</em>.</p>
 
@@ -638,13 +642,108 @@ Vamos voltar ao nosso adapter, quais as dependências que ele recebe?</p>
 
 <p>Antes de executar o comando <code class="highlighter-rouge">npm run test:unit</code>, vamos incluir a variavel <em>POSTGRES_DATABASE_TEST=mochilarouter_test</em> no nosso arquivo <em>.env</em>. Então execute o comando anterior, se tudo estiver ok, você deve ver algo como:</p>
 
-<p><img src="" alt="unit teste itinerary adapter" /></p>
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/unit%20teste%20itinerary%20adapter.png" alt="unit teste itinerary adapter" /></p>
 
 <h4 id="itinerary-repository">Itinerary Repository</h4>
-<h4 id="handler-success">Handler Success</h4>
-<h4 id="handler-error">Handler Error</h4>
+
+<p>Agora, vamos criar o segundo arquivo para testar o nosso repositorio. Dentro de <em>test/unit</em> crie o arquivo <em>itinerary-repository.spec.js</em>.</p>
+
+<p>O nosso arquivo é bem simples, ele tem apenas uma função que recebe um modelo e retorna um objeto com a função <code class="highlighter-rouge">create</code>, essa função create recebe um o objeto a ser inserido no banco de dados.</p>
+
+<p>Para o nosso teste, vamos criar um mock chamado model com uma propriedade create, essa propriedade é uma função (simulando o create do modelo do Sequelize) que executa o <code class="highlighter-rouge">jest.fn</code>. Com isso conseguimos validar se a função foi chamada na chamada do repositorio.</p>
+
+<p>Nosso arquivo de teste <em>itinerary-repository.spec.js</em> ficará assim:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">repository</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../api/itinerary/repository'</span><span class="p">);</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s1">'Itinerary Repository Unit tests'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">create</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+    <span class="p">};</span>
+
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">'Create an Itinerary'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">test</span><span class="p">(</span><span class="s1">'Should execute create function'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="nx">create</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">repository</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
+
+        <span class="nx">create</span><span class="p">();</span>
+
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">create</span><span class="p">).</span><span class="nx">toBeCalled</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Importamos o nosso repositorio, e executamos passando o nosso mock. O retorno da função é um objeto create. Ao ser execultada, podemos validar se a função <code class="highlighter-rouge">model.create()</code> foi chamada. 
+Simples não?</p>
+
+<p>Aqui validamos apenas se a função foi chamada, no testes integrado vamos validar se essa função realmente vai inserir o registro no banco de dados.</p>
+
+<p>Execute o comando para rodar os testes <code class="highlighter-rouge">npm run test:unit</code>. Agora a cobertura vai aumentar um pouco.</p>
+
+<h4 id="handler-success-e-error">Handler Success e Error</h4>
+
+<p>Vamos testar agora os nossos dois handlers de resposta, <em>handler-success.js</em> e <em>handler-error.js</em>.</p>
+
+<p>Teremos dois arquivos de teste, um para cada, mas como o teste será muito parecido, vou explicar o teste do <em>handler-error.js</em> e explicar a diferença para o <em>handler-success.js</em>. Vamos lá.</p>
+
+<p>O nosso handler-error é bem simples, e ele é uma função que recebe o <code class="highlighter-rouge">response</code> do express e retorna uma função que recebe o <code class="highlighter-rouge">error</code> e ao ser executada formata o erro e devolve para o cliente uma resposta de erro formatada.</p>
+
+<p>Então vamos fazer mais um mock. Temos que mockar o nosso <code class="highlighter-rouge">response</code> e suas funções <code class="highlighter-rouge">status()</code> e <code class="highlighter-rouge">json()</code>.</p>
+
+<p>Nosso mock ficara assim:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">json</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+    <span class="p">}))</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<p>Aqui nos temos a função status retornando a função json, assim conseguimos executar o response aninhado, <code class="highlighter-rouge">response.status().json()</code>.</p>
+
+<p>Nosso arquivo de teste <em>handler-error.spec.js</em> será o seguinte:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'use strict'</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">handlerError</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../api/helpers/handler-error'</span><span class="p">);</span>
+
+  <span class="nx">describe</span><span class="p">(</span><span class="s1">'Handler Error Unit tests'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">status</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+        <span class="na">json</span><span class="p">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+      <span class="p">}))</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">error</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Error for testing'</span><span class="p">);</span>
+
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">'Handler Error'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">test</span><span class="p">(</span><span class="s1">'Should return an object of error treated with values default'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">handlerError</span><span class="p">(</span><span class="nx">response</span><span class="p">)(</span><span class="nx">error</span><span class="p">);</span>
+
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">).</span><span class="nx">toBeCalled</span><span class="p">;</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">().</span><span class="nx">json</span><span class="p">).</span><span class="nx">toBeCalled</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</code></pre></div></div>
+
+<p>Como esse handler é de erro, precisamos criar a variavel <code class="highlighter-rouge">error</code> que será passada no nosso <code class="highlighter-rouge">handlerError(response)(error)</code>. Depois validamos se as funções status e json foram chamadas.</p>
+
+<p>A diferença para o testes do <em>handler-success.js</em> é o valor da segunda função, vamos chamar o nosso handlerSuccess passando apenas o <code class="highlighter-rouge">response</code> da seguinte forma <code class="highlighter-rouge">handlerSucces(response)()</code>.</p>
 
 <h3 id="cobertura-dos-testes">Cobertura dos testes</h3>
+
+<p>Apenas com esses testes unitários temos uma boa cobertura de teste. Falta testar o factory e model, mas como esses dois componentes tem dependências internas, vamos testa-los a partir do teste integrado.</p>
+
+<p>Execute o comando <code class="highlighter-rouge">npm run test:unit</code>.</p>
+
+<blockquote>
+  <p>Verifique se a imagem do Postgres está de pé.</p>
+</blockquote>
+
+<p><img src="https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/images/coverage%20teste%20unitario%20create%20itinerary.png" alt="coverage unit test" /></p>
 
 <h3 id="github">Github</h3>
 

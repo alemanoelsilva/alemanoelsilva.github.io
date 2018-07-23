@@ -93,7 +93,7 @@ Como podemos ver, se o ambiente (NODE_ENV) for de teste, atribuímos a database 
 
 Vamos partir para os arquivos _server.js_ e _app.js_. 
 
-O nosso _app.js_ mudou pouca coisa, apenas encapsulamos nossa configuração numa função e a exportamos. 
+O nosso _app.js_ mudou pouco, apenas encapsulamos nossa configuração numa função e a exportamos. 
 
 ```js
   'use strict';
@@ -116,7 +116,7 @@ O nosso _app.js_ mudou pouca coisa, apenas encapsulamos nossa configuração num
 ```
 
 Porque fizemos isso? 
-No arquivo _server.js_, precisamos estabelecer primeiro a conexão com o banco de dados Postgres e depois iniciar o servidor. Isso é necessário porque o nosso modelo passou a utilizar a função `getConnection` para obter a conexão do banco de dados. 
+No arquivo _server.js_, precisamos estabelecer primeiro a conexão com o Postgres e depois iniciar o servidor. Fizemos isso porque o nosso modelo passou a utilizar a função `getConnection` para obter a conexão do banco de dados. 
 
 O arquivo ficou assim: 
 
@@ -327,7 +327,7 @@ contéudo será:
 
 Esse script executa dois comandos, um para criar o database `mochilarouter` e outro para criar outro database `mochilarouter_test`.
 
-Agora é preciso construír a imagem com o comando `docker build -t usuario/postgres .`. O docker vai gerar uma imagem com o nome passado após a opção `-t`.
+Agora é preciso construír a imagem com o comando `docker build -t usuario/postgres . `,  docker vai gerar uma imagem com o nome passado após a opção `-t`.
 
 No meu caso, eu criei a imagem com o nome `alemanoelsilva/postgres`. 
 
@@ -341,9 +341,9 @@ docker run --name alemanoelsilva-postgres -p 5432:5432 -e POSTGRES_USER=postgres
 
 Pronto, vamos criar testes agora?
 
-### Criando nossos primeiros testes
+### Criando nossos primeiros testes unitários
 
-Um benefício que temos ao utilizar essa ideia de arquitetura, é que podemos fazer testes unitários que podem testar cada componente de forma simples e prática. 
+Um benefício que ganhamos ao construir nossa aplicação utilizando uma arquitetura desacoplada é conseguirmos escrever testes unitários cada componente de forma simples e prática. 
 
 Os nossos testes estarão separados em 4 arquivos, sendo eles: 
 
@@ -381,7 +381,7 @@ Podemos criar um mock para simular esses objetos. Algo como:
   };
 ```
 
-Temos um mock com exatamente os 4 objetos que o adapter recebe. Excluindo a propriedade payload, as demais são funções, então utilizamos o `jest.fn()` que funciona de maneira parecida a função `spy` do [sinon](http://sinonjs.org/releases/v4.2.2/spies/). Basicamente, podemos executar o adapter e conseguimos validar se as funções saveItinerary, onSuccess e onError foram executadas ou não, ou se foram executadas 1 ou mais vezes.
+Temos um mock com exatamente os 4 objetos que o adapter recebe. Excluindo a propriedade payload, as demais são funções, então utilizamos o `jest.fn()` que funciona de maneira parecida a função `spy` do [sinon](http://sinonjs.org/releases/v4.2.2/spies/). Basicamente, podemos executar o adapter e conseguimos validar se as funções saveItinerary, onSuccess e onError foram executadas ou não e se foram executadas 1 ou mais vezes.
 
 Para entender melhor, o seguinte teste valida o cenário de sucesso:
 
@@ -414,7 +414,7 @@ O nosso segundo teste valida o cenário de erro:
   });
 ```
 
-A primeira coisa que fizemos foi modificar a função `saveItinerary`, como essa função é assincrona, nos então retornamos uma promessa com um erro `Promise.reject(...)`. No adapter, ao executar `await repository.saveItinerary(payload);` e for devolvido um erro, esse erro será tratado no nosso catch, e por fim, nossa função _onError_ devolve um erro formatado. 
+A primeira coisa que fizemos foi modificar a função `saveItinerary`, como essa função é assincrona, então retornamos uma promessa com um erro `Promise.reject(...)`. No adapter, ao executar `await repository.saveItinerary(payload);` e for devolvido um erro, esse erro será tratado no nosso catch, e por fim, nossa função _onError_ devolve um erro formatado. 
 
 Verificamos que _onSuccess_ não é chamado, e _onError_ é chamado uma única vez.
 
@@ -483,7 +483,7 @@ Por fim, nosso arquivo _itinerary-adapter.spec.js_ será assim:
   });
 ```
 
-> Faltou explicar a função `jest.clearAllMocks()`, Ela é bem simples, a cada teste executado essa função é executado para limpar os nossos mocks. Se essa função não fosse chamada, no segundo teste, a validação `expect(mock.onSuccess).toHaveBeenCalledTimes(0);` retornaria erro, porque no primeiro teste a função onSuccess foi chamada.
+> Faltou explicar a função `jest.clearAllMocks()`, Ela é bem simples, a cada teste executado essa função é executada para limpar os nossos mocks. Se essa função não fosse chamada, no segundo teste, a validação `expect(mock.onSuccess).toHaveBeenCalledTimes(0);` retornaria erro, porque no primeiro teste a função onSuccess foi chamada.
 
 Antes de executar o comando `npm run test:unit`, vamos incluir a variavel *POSTGRES_DATABASE_TEST=mochilarouter_test* no nosso arquivo _.env_. Então execute o comando anterior, se tudo estiver ok, você deve ver algo como: 
 
@@ -493,9 +493,9 @@ Antes de executar o comando `npm run test:unit`, vamos incluir a variavel *POSTG
 
 Agora, vamos criar o segundo arquivo para testar o nosso repositorio. Dentro de _test/unit_ crie o arquivo _itinerary-repository.spec.js_. 
 
-O nosso arquivo é bem simples, ele tem apenas uma função que recebe um modelo e retorna um objeto com a função `create`, essa função create recebe um o objeto a ser inserido no banco de dados. 
+O nosso arquivo é bem simples, ele tem apenas uma função que recebe um modelo e retorna um objeto com a função `create`, essa função recebe um o objeto a ser inserido no banco de dados. 
 
-Para o nosso teste, vamos criar um mock chamado model com uma propriedade create, essa propriedade é uma função (simulando o create do modelo do Sequelize) que executa o `jest.fn`. Com isso conseguimos validar se a função foi chamada na chamada do repositorio.
+Para o nosso teste, vamos criar um mock chamado model com uma propriedade create, essa propriedade é uma função (simulando o create do modelo do Sequelize) que executa o `jest.fn`. Com isso conseguiremos validar se a função foi executada na chamada do repositorio.
 
 Nosso arquivo de teste _itinerary-repository.spec.js_ ficará assim: 
 
@@ -521,7 +521,7 @@ Nosso arquivo de teste _itinerary-repository.spec.js_ ficará assim:
   });
 ```
 
-Importamos o nosso repositorio, e executamos passando o nosso mock. O retorno da função é um objeto create. Ao ser execultada, podemos validar se a função `model.create()` foi chamada. 
+Importamos o nosso repositório, e o executamos passando o nosso mock. O retorno da função é um objeto create. Ao ser execultada, podemos validar se a função `model.create()` foi chamada. 
 Simples não? 
 
 Aqui validamos apenas se a função foi chamada, no testes integrado vamos validar se essa função realmente vai inserir o registro no banco de dados.
@@ -534,7 +534,7 @@ Vamos testar agora os nossos dois handlers de resposta, _handler-success.js_ e _
 
 Teremos dois arquivos de teste, um para cada, mas como o teste será muito parecido, vou explicar o teste do _handler-error.js_ e explicar a diferença para o _handler-success.js_. Vamos lá.
 
-O nosso handler-error é bem simples, e ele é uma função que recebe o `response` do express e retorna uma função que recebe o `error` e ao ser executada formata o erro e devolve para o cliente uma resposta de erro formatada.
+O nosso handler-error é bem simples, ele é uma função que recebe o `response` do express e retorna uma função que recebe o `error` e ao ser executada, formata o erro e devolve para o cliente a resposta.
 
 Então vamos fazer mais um mock. Temos que mockar o nosso `response` e suas funções `status()` e `json()`. 
 
@@ -548,7 +548,7 @@ Nosso mock ficara assim:
   };
 ```
 
-Aqui nos temos a função status retornando a função json, assim conseguimos executar o response aninhado, `response.status().json()`.
+Aqui temos a função status retornando a função json, assim conseguimos executar o response aninhado, `response.status().json()`.
 
 Nosso arquivo de teste _handler-error.spec.js_ será o seguinte: 
 
@@ -583,7 +583,7 @@ A diferença para o testes do _handler-success.js_ é o valor da segunda funçã
 
 ### Cobertura dos testes
 
-Apenas com esses testes unitários temos uma boa cobertura de teste. Falta testar o factory e model, mas como esses dois componentes tem dependências internas, vamos testa-los a partir do teste integrado.
+Apenas com esses testes unitários temos uma boa cobertura de teste. Falta testar o factory e model, mas como esses componentes tem dependências internas, vamos testa-los com testes integrados.
 
 Execute o comando `npm run test:unit`.
 

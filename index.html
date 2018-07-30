@@ -37,9 +37,9 @@ tagline:
   {% if paginator.previous_page %}
   <li class="previous">
     {% if paginator.previous_page == 1 %}
-    <a href="{{ site.BASE_PATH }}/">&larr; Newer</a>
+    <a href="{{ site.BASE_PATH }}/">&larr; Anterior</a>
     {% else %}
-    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.previous_page }}">&larr; Newer</a>
+    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.previous_page }}">&larr; Anterior</a>
     {% endif %}
   </li>
   {% else %}
@@ -49,12 +49,12 @@ tagline:
   {% endif %}
 
   <li>
-    <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    <span class="page_number">Página: {{ paginator.page }} de {{ paginator.total_pages }}</span>
   </li>
 
   {% if paginator.next_page %}
   <li class="next">
-    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.next_page }}">Older &rarr;</a>
+    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.next_page }}">Próximo &rarr;</a>
   </li>
   {% else %}
   <li class="next disabled">

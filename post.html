@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple Blog</title>
+  <title>Blog Post</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,23 +25,16 @@
       margin-top: 20px;
     }
 
-    .post-list {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .post-list li {
+    article {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
       margin-bottom: 20px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 20px;
     }
 
-    .post-list h2 {
-      margin-bottom: 5px;
-    }
-
-    .post-list p {
-      margin-top: 0;
+    h1,
+    h2 {
+      color: #444;
     }
 
     a {
@@ -57,15 +50,15 @@
 
 <body>
   <header>
-    <h1>My Simple Blog</h1>
+    <h1><a href="index.html">My Simple Blog</a></h1>
   </header>
   <main>
-    <ul class="post-list">
-      <!-- Post list items will be inserted here -->
-    </ul>
+    <article id="post-content">
+      <!-- Post content will be inserted here -->
+    </article>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.min.js"></script>
-  <script src="js/blog.js"></script>
+  <script src="js/post.js"></script>
 </body>
 
 </html>

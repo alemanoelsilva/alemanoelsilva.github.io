@@ -12,7 +12,7 @@ async function fetchAndRenderPost() {
 
   const postPath = `_posts/${postFileName.replace(".html", ".md")}`;
   const response = await fetch(
-    `https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/main/${postPath}`
+    `https://raw.githubusercontent.com/alemanoelsilva/alemanoelsilva.github.io/master/${postPath}`
   );
   const postContent = await response.text();
 
